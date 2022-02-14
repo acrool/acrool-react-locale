@@ -8,6 +8,7 @@
 import React, {Children, ReactNode, useState} from 'react';
 import {LocaleProvider} from 'bear-locale';
 import {localeConfig, DEFAULT_LOCALE} from '../config/locale';
+import { persistKey } from 'config/app';
 
 
 interface IProps {
@@ -22,6 +23,7 @@ const LanguageProvider = ({
         <LocaleProvider
             localeConfig={localeConfig}
             defaultLocale={DEFAULT_LOCALE}
+            persistKey={persistKey}
         >
             {Children.only(children)}
         </LocaleProvider>
