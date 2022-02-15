@@ -6,8 +6,6 @@
 [![NPM](https://img.shields.io/npm/v/bear-locale.svg)](https://www.npmjs.com/package/bear-locale)
 [![npm](https://img.shields.io/npm/dm/bear-locale.svg)](https://www.npmjs.com/package/bear-locale)
 
-This project [demo](https://imagine10255.github.io/bear-locale/)
-
 
 ## Install
 
