@@ -16,20 +16,12 @@ yarn add bear-locale
 ```
 
 ## Usage
-in your index.ts add  
-`see the example/src/index.ts`
-
-```tsx
-import {LocaleProvider} from 'bear-locale';
-
-<LocaleProvider >
-    <App/>
-</GridThemeProvider>
-```
 
 create src/config/locale.ts  
 
 ```tsx
+import {TLocaleDictionaries} from 'bear-locale';
+
 export enum ELocales {
     enUS = 'en-US',
     zhTW = 'zh-TW',
@@ -42,6 +34,24 @@ export const localeConfig: TLocaleDictionaries = {
     [ELocales.jaJP]: require('locales/ja-JP').default,
 };
 ```
+
+
+in your index.ts add  
+`see the example/src/index.tsx`
+
+```tsx
+import {LocaleControlProvider} from 'bear-locale';
+import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
+
+<LocaleControlProvider 
+   localeDictionaries={localeDictionaries}
+    defaultLocale={DEFAULT_LOCALE}
+    persistKey="bear-example"
+>
+    <App/>
+</GridThemeProvider>
+```
+
 
 
 
