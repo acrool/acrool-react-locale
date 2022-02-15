@@ -1,6 +1,6 @@
 # bear-locale
 
-> bear project locale system
+> Internationalize Elegant intl library based for Reactjs
 
 
 [![NPM](https://img.shields.io/npm/v/bear-locale.svg)](https://www.npmjs.com/package/bear-locale)
@@ -36,8 +36,7 @@ export const localeConfig: TLocaleDictionaries = {
 ```
 
 
-in your index.ts add  
-`see the example/src/index.tsx`
+in your src/index.tsx add  
 
 ```tsx
 import {LocaleControlProvider} from 'bear-locale';
@@ -58,7 +57,7 @@ import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
 
 There is also a codesandbox template that you can fork and play with it:
 
-[![Edit react-editext-template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/bear-locale-lqsn6)
+[![Edit react-editext-template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/bear-locale-ejk43)
 
 [Component and setup docs](./docs/component.md)
 

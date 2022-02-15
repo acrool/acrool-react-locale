@@ -1,7 +1,7 @@
 {
   "name": "bear-locale",
   "version": "1.0.0",
-  "description": "bear project locale system",
+  "description": "Internationalize Elegant intl library based for Reactjs",
   "keywords": [
     "react",
     "typescript",

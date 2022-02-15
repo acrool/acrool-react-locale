@@ -4,7 +4,6 @@ import {LocaleControlProvider} from 'bear-locale';
 import Dashboard from 'views/Dashoboard';
 import NotComponent from 'views/NotComponent';
 import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
-import {persistKey} from './config/app';
 import {Col, Container, GridThemeProvider, Row} from 'bear-styled-grid';
 
 
@@ -15,7 +14,7 @@ function App() {
             <LocaleControlProvider
                 localeDictionaries={localeDictionaries}
                 defaultLocale={DEFAULT_LOCALE}
-                persistKey={persistKey}
+                persistKey="persist:bear-example"
             >
                 <Container>
                     <Row>
