@@ -1,14 +1,13 @@
 import {TLocaleDictionaries} from 'bear-locale';
 
 
-
 export enum ELocales {
     enUS = 'en-US',
-    zhTW= 'zh-TW',
+    zhTW = 'zh-TW',
     jaJP = 'ja-JP',
 }
 
-export const localeConfig: TLocaleDictionaries = {
+export const localeDictionaries: TLocaleDictionaries = {
     [ELocales.enUS]: require('locales/en-US').default,
     [ELocales.zhTW]: require('locales/zh-TW').default,
     [ELocales.jaJP]: require('locales/ja-JP').default,

@@ -6,10 +6,8 @@ const Dashboard = () => {
 
     const {i18n, setLocale, locale} = useLocale();
 
-    return <div>
+    return <>
 
-        <h1>{i18n('page.home.title')}</h1>
-        <p>{i18n('page.home.desc')}</p>
 
         <select
             onChange={(event) => setLocale((event.target.value) as ELocales)}
@@ -20,7 +18,9 @@ const Dashboard = () => {
             <option>{ELocales.jaJP}</option>
         </select>
 
-    </div>;
+        <p>{i18n('page.home.desc')}</p>
+
+    </>;
 };
 
 export default Dashboard;

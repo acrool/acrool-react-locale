@@ -1,6 +1,6 @@
-const persistKey = 'persist:bear-locale';
+const persistKey = 'persist:bear-example';
 
 
 export {
     persistKey,
-}
+};

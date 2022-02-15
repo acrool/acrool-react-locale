@@ -1,6 +1,6 @@
 
 const Dashboard = () => {
-    return window.i18n('page.home.title');
+    return window.i18n('page.home.desc');
 };
 
 export default Dashboard;
