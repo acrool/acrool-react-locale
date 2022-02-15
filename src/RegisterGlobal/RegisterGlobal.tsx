@@ -7,6 +7,7 @@
 
 import {PureComponent, Children} from 'react';
 import {injectIntl, IntlShape} from 'react-intl';
+import { TI18n } from 'typings';
 
 
 
@@ -21,7 +22,7 @@ class RegisterGlobal extends PureComponent<IProps> {
         window.i18n = this.i18n;
     }
 
-    i18n = (id: string, options?: {defaultMessage?: string, params?: any}) => {
+    i18n: TI18n = (id, options) => {
         const {formatMessage} = this.props.intl;
         return formatMessage({id, defaultMessage: options?.defaultMessage}, options?.params);
     };

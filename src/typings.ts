@@ -1,24 +1,15 @@
 import {MessageFormatElement} from 'intl-messageformat-parser';
 
-
-export enum ELocales {
-    enUS = 'en-US',
-    zhTW= 'zh-TW',
-    zhCN = 'zh-CN',
-    zhSG = 'zh-SG',
-    jaJP= 'ja-JP',
-    thTH = 'th-TH',
-    idID = 'id-ID',
-    viVN = 'vi-VN',
-}
+// export interface DefaultLocales {}
+export type TLocales = string
 
 
 export interface II18nTexts {
     [i18nKey: string]: string
 }
 
-export type TLocaleSetting = {
-    [localeCode in ELocales]?: II18nTexts
+export type TLocaleDictionaries = {
+    [localeCode in TLocales]: II18nTexts
 }
 
 
@@ -27,8 +18,7 @@ export type TMessage = {
 }
 
 
-export type TFormatTranslationMessages<Texts = any, Config = any> = (locale: string, messages: Texts, localeConfig: Config) => II18nTexts;
-
+export type TI18n = (id: string, options?: {defaultMessage?: string, params?: any}) => string
 
 declare global {
     /*~ Here, declare things that go in the global namespace, or augment

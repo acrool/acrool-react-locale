@@ -1,20 +1,20 @@
 import React from 'react';
-import {ELocales} from '../typings';
+import {TLocales} from '../typings';
 
 
 /** -----------------------------------------
  |               Interface                   |
  /** ---------------------------------------*/
 export interface IState {
-    locale: ELocales,
-    setLocale: (locale: ELocales) => void
+    locale?: TLocales,
+    setLocale: (locale: TLocales) => void
 }
 
 /** -----------------------------------------
  |            Initial State                 |
  /** ---------------------------------------*/
 const state: IState = {
-    locale: ELocales.enUS,
+    locale: 'en-US',
     setLocale: () => {},
 };
 

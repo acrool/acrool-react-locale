@@ -4,15 +4,13 @@
  * this component connects the redux state language locale to the
  * IntlProvider component and i18n messages (loaded from `src/resources/lang`)
  */
-import React, {Children, useCallback, useEffect, useState} from 'react';
+import React, {Children, useEffect, useState} from 'react';
 import {IntlProvider} from 'react-intl';
 import TranslationWrapper from './TranslationWrapper';
-import {ELocales, } from '../typings';
+import {TLocales} from '../typings';
 import {LocaleContextProvider} from './context';
-// import {persistKey} from 'config/app';
-import {decodeToJson} from 'bear-jsutils/string';
 import RegisterGlobal from '../RegisterGlobal';
-import {II18nTexts, TLocaleSetting, TMessage} from '../typings';
+import {TLocaleDictionaries} from '../typings';
 import {formatTranslationMessages} from '../utils';
 
 
@@ -20,10 +18,10 @@ import {formatTranslationMessages} from '../utils';
 
 // Stores
 interface IProps{
-    localeConfig: TLocaleSetting
+    localeConfig: TLocaleDictionaries
     children: JSX.Element
     // messages: TMessage
-    defaultLocale?: ELocales,
+    defaultLocale: TLocales,
     persistKey: string,
 }
 
@@ -32,27 +30,20 @@ interface IProps{
 const LanguageProvider = ({
     localeConfig,
     // messages,
-    defaultLocale= ELocales.enUS,
-    persistKey = 'persist:bear-locale',
+    defaultLocale,
+    persistKey = 'persist:bear_locale',
     children
 }: IProps) => {
-    let initLocale = defaultLocale;
-    const persistString = window.localStorage.getItem(persistKey);
-    if(persistString){
-        const persistLocale = decodeToJson<{locale: ELocales}>(persistString)?.locale;
-        if(persistLocale){
-            initLocale = persistLocale;
-        }
-    }
+    const initLocale = (window.localStorage.getItem(persistKey) || defaultLocale) as TLocales;
 
-    const [locale, setLocale] = useState<ELocales>(initLocale);
+    const [locale, setLocale] = useState<TLocales>(initLocale);
 
     // @ts-ignore
-    const message = formatTranslationMessages(locale, localeConfig[locale], defaultLocale, localeConfig);
+    const message = formatTranslationMessages(locale, defaultLocale, localeConfig);
 
     useEffect(() => {
         // 同步語系到瀏覽器中
-        window.localStorage.setItem(persistKey, JSON.stringify({locale}));
+        window.localStorage.setItem(persistKey, locale);
 
     }, [locale]);
 
@@ -67,7 +58,7 @@ const LanguageProvider = ({
         <IntlProvider
             locale={locale}
             key={locale}
-            defaultLocale={ELocales.enUS}
+            defaultLocale={defaultLocale}
             messages={message}
             // @ts-ignore
             textComponent={TranslationWrapper}

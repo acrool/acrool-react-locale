@@ -16,8 +16,8 @@ yarn add bear-locale
 ```
 
 ## Usage
-in your index.js add  
-`see the example/src/index.js`
+in your index.ts add  
+`see the example/src/index.ts`
 
 ```tsx
 import {LocaleProvider} from 'bear-locale';
@@ -26,6 +26,24 @@ import {LocaleProvider} from 'bear-locale';
     <App/>
 </GridThemeProvider>
 ```
+
+create src/config/locale.ts  
+
+```tsx
+export enum ELocales {
+    enUS = 'en-US',
+    zhTW = 'zh-TW',
+    jaJP = 'ja-JP',
+}
+
+export const localeConfig: TLocaleDictionaries = {
+    [ELocales.enUS]: require('locales/en-US').default,
+    [ELocales.zhTW]: require('locales/zh-TW').default,
+    [ELocales.jaJP]: require('locales/ja-JP').default,
+};
+```
+
+
 
 
 There is also a codesandbox template that you can fork and play with it:
