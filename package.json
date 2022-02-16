@@ -1,6 +1,6 @@
 {
   "name": "bear-locale",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Internationalize Elegant intl library based for Reactjs",
   "keywords": [
     "react",
