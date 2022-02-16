@@ -1,11 +1,11 @@
-import {TFormatMessage} from 'bear-locale';
+import {TTranslateI18n} from 'bear-locale';
 
 declare global {
     /*~ Here, declare things that go in the global namespace, or augment
      *~ existing declarations in the global namespace
      */
     interface Window {
-        i18n: TFormatMessage,
+        translateI18n: TTranslateI18n,
     }
 }
 

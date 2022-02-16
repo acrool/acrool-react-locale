@@ -17,14 +17,17 @@ export type TMessage = {
     [code: string]: Record<string, string> | Record<string, MessageFormatElement[]>;
 }
 
+interface IPrams {
+    [key: string]: string|number,
+}
 
-export type TI18n = (id: string, options?: {defaultMessage?: string, params?: any}) => string
+export type TTranslateI18n = (id: string, options?: {defaultMessage?: string, params?: IPrams}) => string
 
 declare global {
     /*~ Here, declare things that go in the global namespace, or augment
      *~ existing declarations in the global namespace
      */
     interface Window {
-        i18n: any,
+        translateI18n: TTranslateI18n,
     }
 }
