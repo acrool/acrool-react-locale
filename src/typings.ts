@@ -21,7 +21,7 @@ interface IPrams {
     [key: string]: string|number,
 }
 
-export type TTranslateI18n = (id: string, options?: {defaultMessage?: string|number, params?: IPrams}) => string
+export type TTranslateI18n = (id: string, options?: {defaultMessage?: string, params?: IPrams}) => string
 
 declare global {
     /*~ Here, declare things that go in the global namespace, or augment
