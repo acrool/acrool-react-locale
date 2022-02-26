@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/imagine10255/bear-react-locale/compare/v1.0.2...v1.0.3) (2022-02-26)
+
+
+### Features
+
+* change package name bear-locale -> bear-react-locale ([dd2c198](https://github.com/imagine10255/bear-react-locale/commit/dd2c198a5a04f9736dafdaf1d10d546eb0664bf1))
+
 ### [1.0.2](https://github.com/imagine10255/bear-react-locale/compare/v1.0.1...v1.0.2) (2022-02-16)
 
 ### [1.0.1](https://github.com/imagine10255/bear-react-locale/compare/v1.0.0...v1.0.1) (2022-02-16)
