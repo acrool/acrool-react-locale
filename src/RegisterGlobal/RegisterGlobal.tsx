@@ -16,7 +16,7 @@ interface IProps {
     intl: IntlShape,
 }
 
-let translateI18n: TTranslateI18n = (id, options) => id;
+export let translateI18n: TTranslateI18n = (id, options) => id;
 
 class RegisterGlobal extends PureComponent<IProps> {
     constructor(props: IProps) {
