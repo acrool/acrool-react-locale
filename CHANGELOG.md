@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.7](https://github.com/imagine10255/bear-react-locale/compare/v1.0.6...v1.0.7) (2022-02-26)
+
+
+### Bug Fixes
+
+* miss export translateI18n ([d974974](https://github.com/imagine10255/bear-react-locale/commit/d974974d1c7ab41e598fa40d9be228c2b5207e29))
+
 ### [1.0.6](https://github.com/imagine10255/bear-react-locale/compare/v1.0.5...v1.0.6) (2022-02-26)
 
 
