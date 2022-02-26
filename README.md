@@ -1,16 +1,16 @@
-# bear-locale
+# bear-react-locale
 
 > Internationalize Elegant intl library based for Reactjs
 
 
-[![NPM](https://img.shields.io/npm/v/bear-locale.svg)](https://www.npmjs.com/package/bear-locale)
-[![npm](https://img.shields.io/npm/dm/bear-locale.svg)](https://www.npmjs.com/package/bear-locale)
+[![NPM](https://img.shields.io/npm/v/bear-react-locale.svg)](https://www.npmjs.com/package/bear-react-locale)
+[![npm](https://img.shields.io/npm/dm/bear-react-locale.svg)](https://www.npmjs.com/package/bear-react-locale)
 
 
 ## Install
 
 ```bash
-yarn add bear-locale
+yarn add bear-react-locale
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ yarn add bear-locale
 create src/config/locale.ts  
 
 ```tsx
-import {TLocaleDictionaries} from 'bear-locale';
+import {TLocaleDictionaries} from 'bear-react-locale';
 
 export enum ELocales {
     enUS = 'en-US',
@@ -37,7 +37,7 @@ export const localeDictionaries: TLocaleDictionaries = {
 in your src/app.tsx add  
 
 ```tsx
-import {LocaleControlProvider} from 'bear-locale';
+import {LocaleControlProvider} from 'bear-react-locale';
 import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
 
 <LocaleControlProvider 
@@ -95,22 +95,23 @@ const App = () => {
 
 function component hook
 ```tsx
-import {useLocale} from 'bear-locale';
+import {useLocale} from 'bear-react-locale';
 
 const {i18n} = useLocale();
 
 return <div>{i18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'taiwan'}})}</div>
 ```
 
-global function in not function component
+global function (in not function component)
 ```
-window.translateI18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'taiwan'}})
+import {translateI18n} from 'bear-react-locale';
+translateI18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'taiwan'}})
 ```
 
 
 There is also a codesandbox template that you can fork and play with it:
 
-[![Edit react-editext-template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/bear-locale-ejk43)
+[![Edit react-editext-template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/bear-react-locale-ejk43)
 
 [Component and setup docs](./docs/component.md)
 

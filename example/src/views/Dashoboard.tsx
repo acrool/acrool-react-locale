@@ -1,4 +1,4 @@
-import {useLocale} from 'bear-locale';
+import {useLocale} from 'bear-react-locale';
 import {ELocales} from 'config/locale';
 import React from 'react';
 

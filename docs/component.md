@@ -2,7 +2,7 @@
 ## Component Col
 > like to bootstrap col class
 ```tsx
-import {Col} from 'bear-locale';
+import {Col} from 'bear-react-locale';
 
 <Col col={24} sm md lg xl={12} xxl>
     content
@@ -18,7 +18,7 @@ Props
 ## Component Row & Flex
 > like to bootstrap row class
 ```tsx
-import {Row, Flex} from 'bear-locale';
+import {Row, Flex} from 'bear-react-locale';
 
 <Row noGutters>
     content
@@ -33,7 +33,7 @@ Props
 | horizontal             | ERowAlign           | **No**   |               |flex-start|center|flex-end                                                                                                        |
 
 ```tsx
-import {Flex} from 'bear-locale';
+import {Flex} from 'bear-react-locale';
 
 <Flex direction={EDirection.row}>
     content
@@ -51,7 +51,7 @@ Props
 ## Component Container
 > like to bootstrap container class
 ```tsx
-import {Container} from 'bear-locale';
+import {Container} from 'bear-react-locale';
 
 <Container fluid>
     content
@@ -69,7 +69,7 @@ Props
 > if your need props, not `${props => ...}` in `${media.md ...}` 
 
 ```tsx
-import {media} from 'bear-locale';
+import {media} from 'bear-react-locale';
 
 const Box = styled.div<{
     isActive: bool

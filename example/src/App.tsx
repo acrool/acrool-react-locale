@@ -1,5 +1,5 @@
 import React from 'react';
-import {LocaleControlProvider} from 'bear-locale';
+import {LocaleControlProvider} from 'bear-react-locale';
 
 import Dashboard from 'views/Dashoboard';
 import NotComponent from 'views/NotComponent';

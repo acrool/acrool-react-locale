@@ -16,10 +16,12 @@ interface IProps {
     intl: IntlShape,
 }
 
+let translateI18n: TTranslateI18n = (id, options) => id;
+
 class RegisterGlobal extends PureComponent<IProps> {
     constructor(props: IProps) {
         super(props);
-        window.translateI18n = this.translateI18n;
+        translateI18n = this.translateI18n;
     }
 
     translateI18n: TTranslateI18n = (id, options) => {

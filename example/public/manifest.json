@@ -1,6 +1,6 @@
 {
-  "short_name": "bear-locale",
-  "name": "bear-locale",
+  "short_name": "bear-react-locale",
+  "name": "bear-react-locale",
   "icons": [
     {
       "src": "favicon.ico",

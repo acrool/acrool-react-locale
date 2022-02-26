@@ -1,4 +1,4 @@
-import {TLocaleDictionaries} from 'bear-locale';
+import {TLocaleDictionaries} from 'bear-react-locale';
 
 
 export enum ELocales {
