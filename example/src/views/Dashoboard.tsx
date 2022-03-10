@@ -1,6 +1,6 @@
+import React from 'react';
 import {useLocale} from 'bear-react-locale';
 import {ELocales} from 'config/locale';
-import React from 'react';
 
 const Dashboard = () => {
 
