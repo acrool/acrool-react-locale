@@ -6,7 +6,7 @@ import {TLocales} from '../typings';
  |               Interface                   |
  /** ---------------------------------------*/
 export interface IState {
-    locale?: TLocales,
+    locale: TLocales,
     setLocale: (locale: TLocales) => void
 }
 
