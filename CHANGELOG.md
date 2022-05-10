@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.10](https://github.com/imagine10255/bear-react-locale/compare/v1.0.9...v1.0.10) (2022-05-10)
+
+
+### Features
+
+* add key check and default key not fail ([73fc40c](https://github.com/imagine10255/bear-react-locale/commit/73fc40cbb70368388e3a6bbf7947a548c1a69dbe))
+
 ### [1.0.9](https://github.com/imagine10255/bear-react-locale/compare/v1.0.8...v1.0.9) (2022-03-10)
 
 
