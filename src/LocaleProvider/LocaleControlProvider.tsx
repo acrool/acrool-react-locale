@@ -1,5 +1,5 @@
 import React, {Children, useEffect, useState} from 'react';
-import {TLocales} from '../typings';
+import {TLocale} from '../typings';
 import {LocaleContextProvider} from './context';
 import {TLocaleDictionaries} from '../typings';
 import LocaleProvider from './LocaleProvider';
@@ -10,7 +10,7 @@ import LocaleProvider from './LocaleProvider';
 interface IProps{
     localeDictionaries: TLocaleDictionaries
     children: JSX.Element
-    defaultLocale: TLocales,
+    defaultLocale: TLocale,
     persistKey: string,
 }
 
@@ -21,8 +21,8 @@ const LocaleControlProvider = ({
     persistKey= 'persist:bear-example_locale',
     children
 }: IProps) => {
-    const initLocale = (window.localStorage.getItem(persistKey) || defaultLocale) as TLocales;
-    const [locale, setLocale] = useState<TLocales>(initLocale);
+    const initLocale = (window.localStorage.getItem(persistKey) || defaultLocale) as TLocale;
+    const [locale, setLocale] = useState<TLocale>(initLocale);
 
     useEffect(() => {
         // 同步語系到瀏覽器中

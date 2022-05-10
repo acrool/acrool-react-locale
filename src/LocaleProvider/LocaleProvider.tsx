@@ -1,7 +1,7 @@
 import React, {Children} from 'react';
 import {IntlProvider} from 'react-intl';
 import TranslationWrapper from './TranslationWrapper';
-import {TLocales} from '../typings';
+import {TLocale} from '../typings';
 import RegisterGlobal from '../RegisterGlobal';
 import {TLocaleDictionaries} from '../typings';
 import {formatTranslationMessages} from '../utils';
@@ -10,8 +10,8 @@ import {formatTranslationMessages} from '../utils';
 interface IProps{
     localeDictionaries: TLocaleDictionaries
     children: JSX.Element
-    locale: TLocales,
-    defaultLocale: TLocales,
+    locale: TLocale,
+    defaultLocale: TLocale,
 }
 
 

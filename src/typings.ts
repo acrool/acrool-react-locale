@@ -1,7 +1,7 @@
 import {MessageFormatElement} from 'intl-messageformat-parser';
 
-// export interface DefaultLocales {}
-export type TLocales = string
+// export interface DefaulTLocale {}
+export type TLocale = string
 
 
 export interface II18nTexts {
@@ -9,7 +9,7 @@ export interface II18nTexts {
 }
 
 export type TLocaleDictionaries = {
-    [localeCode in TLocales]: II18nTexts
+    [localeCode in TLocale]: II18nTexts
 }
 
 

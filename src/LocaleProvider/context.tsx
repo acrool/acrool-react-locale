@@ -1,13 +1,13 @@
 import React from 'react';
-import {TLocales} from '../typings';
+import {TLocale} from '../typings';
 
 
 /** -----------------------------------------
  |               Interface                   |
  /** ---------------------------------------*/
 export interface IState {
-    locale: TLocales,
-    setLocale: (locale: TLocales) => void
+    locale: TLocale,
+    setLocale: (locale: TLocale) => void
 }
 
 /** -----------------------------------------

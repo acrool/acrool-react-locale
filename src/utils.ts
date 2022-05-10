@@ -1,4 +1,4 @@
-import {TLocales, II18nTexts, TLocaleDictionaries, TMessage} from './typings';
+import {II18nTexts, TLocaleDictionaries, TMessage, TLocale} from './typings';
 
 
 /**
@@ -7,10 +7,18 @@ import {TLocales, II18nTexts, TLocaleDictionaries, TMessage} from './typings';
  * @param defaultLocale
  * @param localeDictionaries
  */
-export const formatTranslationMessages = (locale: TLocales, defaultLocale: TLocales, localeDictionaries: TLocaleDictionaries): II18nTexts => {
+export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionaries): II18nTexts => {
 
     // Get Default Setting
-    const messages = localeDictionaries[locale];
+    let messages = localeDictionaries[locale];
+    if(typeof messages === 'undefined') {
+        console.log(`[bear-react-locale] localeDictionaries not have key \`${locale}\` in locale!, use default \`${defaultLocale}\``);
+        messages = localeDictionaries[defaultLocale];
+        if (typeof messages === 'undefined') {
+            console.warn(`[bear-react-locale] localeDictionaries not have key \`${defaultLocale}\` in locale!, please check`);
+            return {};
+        }
+    }
     const defaultLocaleDictionary = locale !== defaultLocale ? formatTranslationMessages(defaultLocale, defaultLocale, localeDictionaries) : {};
     const flattenFormattedMessages = (formattedMessages: TMessage, key: string): TMessage => {
         const formattedMessage = !messages[key] && locale !== defaultLocale ? defaultLocaleDictionary[key] : messages[key];
