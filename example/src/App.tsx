@@ -4,7 +4,7 @@ import {LocaleControlProvider} from 'bear-react-locale';
 import Dashboard from 'views/Dashoboard';
 import NotComponent from 'views/NotComponent';
 import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
-import {Col, Container, GridThemeProvider, Row} from 'bear-styled-grid';
+import {Col, Container, GridThemeProvider, Row} from 'bear-react-grid';
 
 
 function App() {

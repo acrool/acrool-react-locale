@@ -7,6 +7,14 @@
 [![npm](https://img.shields.io/npm/dm/bear-react-locale.svg)](https://www.npmjs.com/package/bear-react-locale)
 
 
+## Support Version Map
+
+React | React Scripts | Bear React Grid | 
+------|---------------|----------------:|
+18    | 5.0.1         |           2.0.0 |
+17    | 4.0.3         |          1.0.10 |
+
+
 ## Install
 
 ```bash
