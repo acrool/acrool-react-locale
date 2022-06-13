@@ -25,17 +25,17 @@ const LanguageProvider = ({
     const message = formatTranslationMessages(locale, defaultLocale, localeDictionaries);
 
     return <IntlProvider
-            locale={locale}
-            key={locale}
-            defaultLocale={defaultLocale}
-            messages={message}
-            // @ts-ignore
-            textComponent={TranslationWrapper}
-        >
-            <RegisterGlobal>
-                {Children.only(children)}
-            </RegisterGlobal>
-        </IntlProvider>
+        locale={locale}
+        key={locale}
+        defaultLocale={defaultLocale}
+        messages={message}
+        // @ts-ignore
+        textComponent={TranslationWrapper}
+    >
+        <RegisterGlobal>
+            {Children.only(children)}
+        </RegisterGlobal>
+    </IntlProvider>;
 
 };
 
