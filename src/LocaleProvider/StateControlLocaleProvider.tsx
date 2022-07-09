@@ -15,7 +15,7 @@ interface IProps{
 }
 
 
-const LocaleControlProvider = ({
+const StateControlLocaleProvider = ({
     localeDictionaries,
     defaultLocale,
     persistKey= 'persist:bear-example_locale',
@@ -30,15 +30,14 @@ const LocaleControlProvider = ({
 
     }, [locale]);
 
-    return <LocaleContextProvider value={{locale, setLocale}}>
-        <LocaleProvider
-            locale={locale}
-            defaultLocale={defaultLocale}
-            localeDictionaries={localeDictionaries}
-        >
-            {Children.only(children)}
-        </LocaleProvider>
-    </LocaleContextProvider>;
+    return <LocaleProvider
+        locale={locale}
+        setLocale={setLocale}
+        defaultLocale={defaultLocale}
+        localeDictionaries={localeDictionaries}
+    >
+        {Children.only(children)}
+    </LocaleProvider>;
 };
 
-export default LocaleControlProvider;
+export default React.memo(StateControlLocaleProvider, () => true);

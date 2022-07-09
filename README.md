@@ -45,10 +45,10 @@ export const localeDictionaries: TLocaleDictionaries = {
 in your src/app.tsx add  
 
 ```tsx
-import {LocaleControlProvider} from 'bear-react-locale';
+import {StateControlLocaleProvider} from 'bear-react-locale';
 import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
 
-<LocaleControlProvider 
+<StateControlLocaleProvider 
    localeDictionaries={localeDictionaries}
     defaultLocale={DEFAULT_LOCALE}
     persistKey="bear-example"
