@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1-alpha.0](https://github.com/imagine10255/bear-react-locale/compare/v2.0.0...v2.0.1-alpha.0) (2022-07-09)
+
 ## [2.0.0](https://github.com/imagine10255/bear-react-locale/compare/v1.0.10...v2.0.0) (2022-06-13)
 
 ### [1.0.10](https://github.com/imagine10255/bear-react-locale/compare/v1.0.9...v1.0.10) (2022-05-10)
