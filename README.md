@@ -42,7 +42,7 @@ export const localeDictionaries: TLocaleDictionaries = {
 ```
 
 
-in your src/app.tsx add  
+in your src/app.tsx add  (is not global state)
 
 ```tsx
 import {StateControlLocaleProvider} from 'bear-react-locale';
@@ -58,9 +58,17 @@ import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
 ```
 
 
-if you use redux link locale, your can create custom Provider in your project
+if you use redux(global state) link locale, your can create custom Provider in your project
 
 ```tsx
+import React, {Children} from 'react';
+import {LocaleProvider} from 'bear-react-locale';
+import {useDispatch, useSelector} from 'react-redux';
+import {localeDictionaries, DEFAULT_LOCALE, ELocales} from 'config/locale';
+
+// Stores
+import {selector, actions} from 'store/main/language';
+
 interface IProps {
     children: JSX.Element
 }
@@ -68,12 +76,18 @@ interface IProps {
 const LanguageProvider = ({
     children
 }: IProps) => {
+    const dispatch = useDispatch();
     const locale = useSelector(selector.selectLanguage);
+
+    const handleChangeLocale = (locale: ELocales) => {
+        dispatch(actions.setLocale({locale}));
+    };
 
     return <LocaleProvider
         localeDictionaries={localeDictionaries}
         defaultLocale={DEFAULT_LOCALE}
         locale={locale}
+        setLocale={(locale: string ) => handleChangeLocale(locale as ELocales)}
     >
         {Children.only(children)}
     </LocaleProvider>;
