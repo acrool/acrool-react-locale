@@ -1,4 +1,4 @@
-import React, {Children} from 'react';
+import React, {Children, Fragment} from 'react';
 import {IntlProvider} from 'react-intl';
 import TranslationWrapper from './TranslationWrapper';
 import {TLocale} from '../typings';
@@ -36,9 +36,10 @@ const LocaleProvider = ({
             // @ts-ignore
             textComponent={TranslationWrapper}
         >
-            <RegisterGlobal>
+            <Fragment>
+                <RegisterGlobal/>
                 {Children.only(children)}
-            </RegisterGlobal>
+            </Fragment>
         </IntlProvider>
     </LocaleContextProvider>
 

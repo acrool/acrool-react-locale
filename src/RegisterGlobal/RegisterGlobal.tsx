@@ -5,14 +5,13 @@
  * https://github.com/yahoo/react-intl/issues/416
  */
 
-import {PureComponent, Children} from 'react';
+import {PureComponent} from 'react';
 import {injectIntl, IntlShape} from 'react-intl';
 import { TTranslateI18n } from '../typings';
 
 
 
 interface IProps {
-    children: JSX.Element,
     intl: IntlShape,
 }
 
@@ -30,7 +29,7 @@ class RegisterGlobal extends PureComponent<IProps> {
     };
 
     render() {
-        return Children.only(this.props.children);
+        return undefined;
     }
 }
 
