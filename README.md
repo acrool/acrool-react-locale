@@ -124,7 +124,7 @@ const {i18n} = useLocale();
 return <div>{i18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'taiwan'}})}</div>
 ```
 
-global function (in not function component)
+global function (in not function component) `only in provider children component`
 ```
 import {translateI18n} from 'bear-react-locale';
 translateI18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'taiwan'}})
