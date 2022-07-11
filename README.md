@@ -49,7 +49,7 @@ import {StateControlLocaleProvider} from 'bear-react-locale';
 import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
 
 <StateControlLocaleProvider 
-   localeDictionaries={localeDictionaries}
+    localeDictionaries={localeDictionaries}
     defaultLocale={DEFAULT_LOCALE}
     persistKey="bear-example"
 >

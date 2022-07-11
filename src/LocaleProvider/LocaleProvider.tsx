@@ -39,7 +39,7 @@ const LocaleProvider = ({
             <RegisterGlobal>
                 {Children.only(children)}
             </RegisterGlobal>
-        </IntlProvider>;
+        </IntlProvider>
     </LocaleContextProvider>
 
 };
