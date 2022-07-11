@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/imagine10255/bear-react-locale/compare/v2.0.1...v2.0.2) (2022-07-11)
+
+
+### Bug Fixes
+
+* fix LocaleProvider remove ';' and StateControlLocaleProvider rename to ControlLocaleProvider ([0c8bd7c](https://github.com/imagine10255/bear-react-locale/commit/0c8bd7cc3fbc067dfc5ae24fd38d4c7a400455a7))
+
 ### [2.0.1](https://github.com/imagine10255/bear-react-locale/compare/v2.0.1-alpha.0...v2.0.1) (2022-07-09)
 
 ### [2.0.1-alpha.0](https://github.com/imagine10255/bear-react-locale/compare/v2.0.0...v2.0.1-alpha.0) (2022-07-09)
