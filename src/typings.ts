@@ -17,9 +17,9 @@ export type TMessage = {
     [code: string]: Record<string, string> | Record<string, MessageFormatElement[]>;
 }
 
-interface IPrams {
+interface IArgs {
     [key: string]: string|number,
 }
 
-export type TTranslateI18n = (id: string, options?: {defaultMessage?: string, params?: IPrams}) => string
+export type TTranslateI18n = (id: string, options?: {def?: string, args?: IArgs}) => string
 

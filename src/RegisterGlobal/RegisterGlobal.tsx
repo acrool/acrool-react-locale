@@ -25,7 +25,7 @@ class RegisterGlobal extends PureComponent<IProps> {
 
     translateI18n: TTranslateI18n = (id, options) => {
         const {formatMessage} = this.props.intl;
-        return formatMessage({id, defaultMessage: options?.defaultMessage}, options?.params);
+        return formatMessage({id, defaultMessage: options?.def}, options?.args);
     };
 
     render() {

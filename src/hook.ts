@@ -9,7 +9,7 @@ export const useLocale = () => {
     const {formatMessage} = useIntl();
 
     const i18n: TTranslateI18n = useCallback((id, options) => {
-        return formatMessage({id, defaultMessage: options?.defaultMessage}, options?.params);
+        return formatMessage({id, defaultMessage: options?.def}, options?.args);
     }, [locale]);
 
     return {
