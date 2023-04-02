@@ -13,7 +13,7 @@ const localeDictionariesData = {
     'page.home.feature.title': 'Feature',
 };
 
-export const localeDictionaries = {
+const localeDictionaries = {
     [ELocales.enUS]: localeDictionariesData,
     [ELocales.zhTW]: localeDictionariesData,
     [ELocales.jaJP]: localeDictionariesData,
@@ -29,3 +29,6 @@ test('formatTranslationMessages', () => {
     expect(testTrueKey).toEqual(localeDictionariesData);
     expect(testFailKayAndFailDefaultKey).toEqual({});
 });
+
+
+export {}
