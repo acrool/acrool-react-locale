@@ -1,4 +1,4 @@
-import {II18nTexts, TLocaleDictionaries, TMessage, TLocale} from './typings';
+import {II18nTexts, TLocaleDictionaries, TMessage, TLocale} from './types';
 
 
 /**

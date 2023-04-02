@@ -1,8 +1,6 @@
 import React, {Children, useEffect, useState} from 'react';
-import {TLocale} from '../typings';
-import {LocaleContextProvider} from './context';
-import {TLocaleDictionaries} from '../typings';
 import LocaleProvider from './LocaleProvider';
+import {TLocale, TLocaleDictionaries} from '../types';
 
 
 

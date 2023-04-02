@@ -2,17 +2,9 @@
 
 > Internationalize Elegant intl library based for Reactjs
 
-
 [![NPM](https://img.shields.io/npm/v/bear-react-locale.svg)](https://www.npmjs.com/package/bear-react-locale)
 [![npm](https://img.shields.io/npm/dm/bear-react-locale.svg)](https://www.npmjs.com/package/bear-react-locale)
 
-
-## Support Version Map
-
-React | React Scripts | Bear React Grid | 
-------|---------------|----------------:|
-18    | 5.0.1         |           2.0.0 |
-17    | 4.0.3         |          1.0.10 |
 
 
 ## Install
@@ -23,7 +15,7 @@ yarn add bear-react-locale
 
 ## Usage
 
-create src/config/locale.ts  
+create src/config/locale.ts
 
 ```tsx
 import {TLocaleDictionaries} from 'bear-react-locale';

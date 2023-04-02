@@ -1,5 +1,5 @@
 import React from 'react';
-import {TLocale} from '../typings';
+import {TLocale} from '../types';
 
 
 /** -----------------------------------------

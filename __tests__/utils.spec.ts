@@ -1,4 +1,4 @@
-import {formatTranslationMessages} from '../utils';
+import {formatTranslationMessages} from '../src/utils';
 
 enum ELocales {
     enUS = 'en-US',

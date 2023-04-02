@@ -1,11 +1,10 @@
 import React, {Children, Fragment} from 'react';
 import {IntlProvider} from 'react-intl';
 import TranslationWrapper from './TranslationWrapper';
-import {TLocale} from '../typings';
 import RegisterGlobal from '../RegisterGlobal';
-import {TLocaleDictionaries} from '../typings';
 import {formatTranslationMessages} from '../utils';
-import { LocaleContextProvider } from './context';
+import {LocaleContextProvider} from './context';
+import {TLocale, TLocaleDictionaries} from '../types';
 
 
 interface IProps{
@@ -41,7 +40,7 @@ const LocaleProvider = ({
                 {Children.only(children)}
             </Fragment>
         </IntlProvider>
-    </LocaleContextProvider>
+    </LocaleContextProvider>;
 
 };
 

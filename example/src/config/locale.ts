@@ -1,5 +1,7 @@
 import {TLocaleDictionaries} from 'bear-react-locale';
-
+import {default as localeEnUS} from '../locales/en-US';
+import {default as localeZhTW} from '../locales/zh-TW';
+import {default as localeJaJP} from '../locales/ja-JP';
 
 export enum ELocales {
     enUS = 'en-US',
@@ -8,9 +10,9 @@ export enum ELocales {
 }
 
 export const localeDictionaries: TLocaleDictionaries = {
-    [ELocales.enUS]: require('locales/en-US').default,
-    [ELocales.zhTW]: require('locales/zh-TW').default,
-    [ELocales.jaJP]: require('locales/ja-JP').default,
+    [ELocales.enUS]: localeEnUS,
+    [ELocales.zhTW]: localeZhTW,
+    [ELocales.jaJP]: localeJaJP,
 
 };
 

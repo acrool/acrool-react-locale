@@ -7,7 +7,7 @@
 
 import {PureComponent} from 'react';
 import {injectIntl, IntlShape} from 'react-intl';
-import { TTranslateI18n } from '../typings';
+import { TTranslateI18n } from '../types';
 
 
 
