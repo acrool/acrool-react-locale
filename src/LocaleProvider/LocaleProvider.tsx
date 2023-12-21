@@ -10,6 +10,7 @@ import {TLocale, TLocaleDictionaries} from '../types';
 interface IProps{
     localeDictionaries: TLocaleDictionaries
     children: JSX.Element
+    key?: string,
     locale: TLocale,
     setLocale: (locale: string) => void,
     defaultLocale: TLocale,
@@ -18,6 +19,7 @@ interface IProps{
 
 
 const LocaleProvider = ({
+    key,
     localeDictionaries,
     locale,
     setLocale,
@@ -28,8 +30,8 @@ const LocaleProvider = ({
 
     return <LocaleContextProvider value={{locale, setLocale}}>
         <IntlProvider
+            key={key} // Using Key will cause the language to be changed and remounted.
             locale={locale}
-            key={locale}
             defaultLocale={defaultLocale}
             messages={message}
             // @ts-ignore

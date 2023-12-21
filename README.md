@@ -1,9 +1,21 @@
-# bear-react-locale
+# Bear React Locale
 
-> Internationalize Elegant intl library based for Reactjs
+<a href="https://bear-react-locale.pages.dev/" title="Bear React Locale - Internationalize Elegant intl library based for Reactjs">
+    <img src="https://bear-react-locale.pages.dev/img/banner.webp" alt="Bear React Table Logo"/>
+</a>
 
-[![NPM](https://img.shields.io/npm/v/bear-react-locale.svg)](https://www.npmjs.com/package/bear-react-locale)
-[![npm](https://img.shields.io/npm/dm/bear-react-locale.svg)](https://www.npmjs.com/package/bear-react-locale)
+<p align="center">
+    Internationalize Elegant intl library based for Reactjs
+</p>
+
+<div align="center">
+
+[![NPM](https://img.shields.io/npm/v/bear-react-locale.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-react-locale)
+[![npm downloads](https://img.shields.io/npm/dm/bear-react-locale.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-react-locale)
+[![npm](https://img.shields.io/npm/dt/bear-react-locale.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-react-locale)
+[![npm](https://img.shields.io/npm/l/bear-react-locale?style=for-the-badge)](https://github.com/imagine10255/bear-react-locale/blob/main/LICENSE)
+
+</div>
 
 
 
