@@ -10,7 +10,7 @@ import {TLocale, TLocaleDictionaries} from '../types';
 interface IProps{
     localeDictionaries: TLocaleDictionaries
     children: JSX.Element
-    key?: string,
+    isReMountWithChangeLocale?: boolean,
     locale: TLocale,
     setLocale: (locale: string) => void,
     defaultLocale: TLocale,
@@ -19,8 +19,8 @@ interface IProps{
 
 
 const LocaleProvider = ({
-    key,
     localeDictionaries,
+    isReMountWithChangeLocale = false,
     locale,
     setLocale,
     defaultLocale,
@@ -30,7 +30,7 @@ const LocaleProvider = ({
 
     return <LocaleContextProvider value={{locale, setLocale}}>
         <IntlProvider
-            key={key} // Using Key will cause the language to be changed and remounted.
+            key={isReMountWithChangeLocale ? locale: undefined} // Using Key will cause the language to be changed and remounted.
             locale={locale}
             defaultLocale={defaultLocale}
             messages={message}
@@ -43,7 +43,6 @@ const LocaleProvider = ({
             </Fragment>
         </IntlProvider>
     </LocaleContextProvider>;
-
 };
 
 export default React.memo(LocaleProvider, (a, b) => a.locale === b.locale && a.defaultLocale === b.defaultLocale);

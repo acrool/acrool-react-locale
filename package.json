@@ -46,9 +46,6 @@
     "release:patch": "standard-version -r patch",
     "release:alpha": "standard-version --prerelease alpha"
   },
-  "peerDependencies": {
-    "react-router-dom": "6.3.0"
-  },
   "dependencies": {
     "react": "^18.x",
     "react-dom": "^18.x"
@@ -56,7 +53,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.0",
     "@types/node": "^18.15.11",
-    "@types/react": "^18.0.28",
+    "@types/react": "^18.2.48",
     "@types/react-dom": "^18.0.11",
     "@types/react-router-dom": "5.3.3",
     "@vitejs/plugin-react-swc": "^3.0.0",

@@ -56,9 +56,10 @@ import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
     localeDictionaries={localeDictionaries}
     defaultLocale={DEFAULT_LOCALE}
     persistKey="bear-example"
+    isReMountWithChangeLocale={true} // option: If you want to change the language, re-mount
 >
     <AppRoute/>
-</GridThemeProvider>
+</StateControlLocaleProvider>
 ```
 
 
