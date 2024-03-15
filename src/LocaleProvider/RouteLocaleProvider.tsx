@@ -1,6 +1,4 @@
-'use client';
-
-import React, {Children, useEffect, useState} from 'react';
+import React, {Children, useState} from 'react';
 import LocaleProvider from './LocaleProvider';
 import {TLocale, TLocaleDictionaries} from '../types';
 
@@ -14,6 +12,13 @@ interface IProps{
 }
 
 
+/**
+ * For SSG Route
+ * @param localeDictionaries
+ * @param currentLocale
+ * @param defaultLocale
+ * @param children
+ */
 const RouteLocaleProvider = ({
     localeDictionaries,
     currentLocale,
