@@ -1,7 +1,7 @@
-# Bear React Locale
+# Acrool React Locale
 
-<a href="https://bear-react-locale.pages.dev/" title="Bear React Locale - Internationalize Elegant intl library based for Reactjs">
-    <img src="https://bear-react-locale.pages.dev/img/banner.webp" alt="Bear React Table Logo"/>
+<a href="https://acrool-react-locale.pages.dev/" title="Acrool React Locale - Internationalize Elegant intl library based for Reactjs">
+    <img src="https://acrool-react-locale.pages.dev/og.webp" alt="Acrool React Locale Logo"/>
 </a>
 
 <p align="center">
@@ -10,10 +10,13 @@
 
 <div align="center">
 
-[![NPM](https://img.shields.io/npm/v/bear-react-locale.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-react-locale)
-[![npm downloads](https://img.shields.io/npm/dm/bear-react-locale.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-react-locale)
-[![npm](https://img.shields.io/npm/dt/bear-react-locale.svg?style=for-the-badge)](https://www.npmjs.com/package/bear-react-locale)
-[![npm](https://img.shields.io/npm/l/bear-react-locale?style=for-the-badge)](https://github.com/imagine10255/bear-react-locale/blob/main/LICENSE)
+[![NPM](https://img.shields.io/npm/v/@acrool/react-locale.svg?style=for-the-badge)](https://www.npmjs.com/package/@acrool/react-locale)
+[![npm](https://img.shields.io/bundlejs/size/@acrool/react-locale?style=for-the-badge)](https://github.com/acrool/@acrool/react-locale/blob/main/LICENSE)
+[![npm](https://img.shields.io/npm/l/@acrool/react-locale?style=for-the-badge)](https://github.com/acrool/react-locale/blob/main/LICENSE)
+
+[![npm downloads](https://img.shields.io/npm/dm/@acrool/react-locale.svg?style=for-the-badge)](https://www.npmjs.com/package/@acrool/react-locale)
+[![npm](https://img.shields.io/npm/dt/@acrool/react-locale.svg?style=for-the-badge)](https://www.npmjs.com/package/@acrool/react-locale)
+
 
 </div>
 
@@ -145,4 +148,4 @@ There is also a codesandbox template that you can fork and play with it:
 
 ## License
 
-MIT © [imagine10255](https://github.com/imagine10255)
+MIT © [Acrool](https://github.com/acrool) & [Imagine](https://github.com/imagine10255)

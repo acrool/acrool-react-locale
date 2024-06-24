@@ -1,4 +1,4 @@
-import React, {Children, useEffect, useState} from 'react';
+import React, {Children, ReactNode, useEffect, useState} from 'react';
 import LocaleProvider from './LocaleProvider';
 import {TLocale, TLocaleDictionaries} from '../types';
 
@@ -7,7 +7,7 @@ import {TLocale, TLocaleDictionaries} from '../types';
 
 interface IProps{
     localeDictionaries: TLocaleDictionaries
-    children: JSX.Element
+    children: ReactNode
     defaultLocale: TLocale,
     persistKey: string,
 }
@@ -34,7 +34,7 @@ const StateControlLocaleProvider = ({
         defaultLocale={defaultLocale}
         localeDictionaries={localeDictionaries}
     >
-        {Children.only(children)}
+        {children}
     </LocaleProvider>;
 };
 

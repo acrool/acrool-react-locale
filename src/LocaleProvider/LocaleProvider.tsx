@@ -1,4 +1,4 @@
-import React, {Children, Fragment} from 'react';
+import React, {Children, Fragment, ReactNode} from 'react';
 import {IntlProvider} from 'react-intl';
 import TranslationWrapper from './TranslationWrapper';
 import RegisterGlobal from '../RegisterGlobal';
@@ -9,7 +9,7 @@ import {TLocale, TLocaleDictionaries} from '../types';
 
 interface IProps{
     localeDictionaries: TLocaleDictionaries
-    children: JSX.Element
+    children: ReactNode
     isReMountWithChangeLocale?: boolean,
     locale: TLocale,
     setLocale: (locale: string) => void,
@@ -39,7 +39,7 @@ const LocaleProvider = ({
         >
             <Fragment>
                 <RegisterGlobal/>
-                {Children.only(children)}
+                {children}
             </Fragment>
         </IntlProvider>
     </LocaleContextProvider>;

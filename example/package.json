@@ -9,7 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "bear-react-locale": "link:..",
+    "@acrool/react-table": "5.1.1-alpha.0",
+    "@acrool/react-locale": "link:..",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -18,6 +19,7 @@
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "typescript": "^4.9.3",
-    "vite": "^4.2.0"
+    "vite": "^4.2.0",
+    "vite-plugin-svgr": "^4.2.0"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "bear-react-locale",
+  "name": "@acrool/react-locale",
   "version": "3.1.1",
   "description": "Internationalize Elegant intl library based for Reactjs",
   "keywords": [
@@ -14,14 +14,15 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/imagine10255/bear-react-locale.git"
+    "url": "https://github.com/acrool/acrool-react-locale.git"
   },
   "type": "module",
-  "module": "./dist/bear-react-locale.es.js",
+  "module": "./dist/acrool-react-locale.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/bear-react-locale.es.js"
+      "browser": "./dist/acrool-react-locale.es.js",
+      "import": "./dist/acrool-react-locale.es.js"
     }
   },
   "files": [

@@ -20,7 +20,7 @@ export default defineConfig({
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),
             formats: ['es'],
-            fileName: (format) => `bear-react-locale.${format}.js`,
+            fileName: (format) => `acrool-react-locale.${format}.js`,
         },
         cssTarget: 'chrome61',
         rollupOptions: {
