@@ -16,7 +16,7 @@ interface IProps{
 const StateControlLocaleProvider = ({
     localeDictionaries,
     defaultLocale,
-    persistKey= 'persist:bear-example_locale',
+    persistKey= 'persist:acrool-example_locale',
     children
 }: IProps) => {
     const initLocale = (window.localStorage.getItem(persistKey) || defaultLocale) as TLocale;
@@ -34,7 +34,7 @@ const StateControlLocaleProvider = ({
         defaultLocale={defaultLocale}
         localeDictionaries={localeDictionaries}
     >
-        {children}
+        {Children.only(children)}
     </LocaleProvider>;
 };
 
