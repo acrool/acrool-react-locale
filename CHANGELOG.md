@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2](https://github.com/acrool/acrool-react-locale/compare/v3.1.2-alpha.0...v3.1.2) (2024-06-24)
+
 ### [3.1.2-alpha.0](https://github.com/acrool/acrool-react-locale/compare/v3.1.1...v3.1.2-alpha.0) (2024-06-24)
 
 ### [3.1.1](https://github.com/imagine10255/bear-react-locale/compare/v3.1.1-alpha.1...v3.1.1) (2024-03-15)
