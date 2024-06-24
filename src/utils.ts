@@ -12,10 +12,10 @@ export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocal
     // Get Default Setting
     let messages = localeDictionaries[locale];
     if(typeof messages === 'undefined') {
-        console.log(`[bear-react-locale] localeDictionaries not have key \`${locale}\` in locale!, use default \`${defaultLocale}\``);
+        console.log(`[@acrool/react-locale] localeDictionaries not have key \`${locale}\` in locale!, use default \`${defaultLocale}\``);
         messages = localeDictionaries[defaultLocale];
         if (typeof messages === 'undefined') {
-            console.warn(`[bear-react-locale] localeDictionaries not have key \`${defaultLocale}\` in locale!, please check`);
+            console.warn(`[@acrool/react-locale] localeDictionaries not have key \`${defaultLocale}\` in locale!, please check`);
             return {};
         }
     }

@@ -1,4 +1,4 @@
-import {TLocaleDictionaries} from 'bear-react-locale';
+import {TLocaleDictionaries} from '@acrool/react-locale';
 import {default as localeEnUS} from '../locales/en-US';
 import {default as localeZhTW} from '../locales/zh-TW';
 import {default as localeJaJP} from '../locales/ja-JP';
