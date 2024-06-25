@@ -2,9 +2,13 @@
 # yarn lockfile v1
 
 
-"@acrool/react-locale@link:..":
-  version "0.0.0"
-  uid ""
+"@acrool/react-locale@3.1.2-alpha.0":
+  version "3.1.2-alpha.0"
+  resolved "https://registry.yarnpkg.com/@acrool/react-locale/-/react-locale-3.1.2-alpha.0.tgz#44fe24197c05cc029d4d48c109b976fa139202e5"
+  integrity sha512-mOlmIwjqAey8Dl2xPnd4K+9OiWL5l1bR1eVLCnnH+JD90mM+qQzgXRI4v9rXo6x+HmRSjLxI8//lsJ0FQSf3pA==
+  dependencies:
+    react "^18.x"
+    react-dom "^18.x"
 
 "@acrool/react-table@5.1.1-alpha.0":
   version "5.1.1-alpha.0"

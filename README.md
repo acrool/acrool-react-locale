@@ -25,7 +25,7 @@
 ## Install
 
 ```bash
-yarn add bear-react-locale
+yarn add @acrool/react-locale
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ yarn add bear-react-locale
 create src/config/locale.ts
 
 ```tsx
-import {TLocaleDictionaries} from 'bear-react-locale';
+import {TLocaleDictionaries} from '@acrool/react-locale';
 
 export enum ELocales {
     enUS = 'en-US',
@@ -48,17 +48,39 @@ export const localeDictionaries: TLocaleDictionaries = {
 };
 ```
 
+create src/locales/en-US.ts
+
+```ts
+export default {
+    'page.home.title': 'Home',
+    'page.home.desc': `This is a carousel developed directly using React + Flexbox (non-js secondary development package into React),<br/>
+    and only include the features you need, not too many cool effects that might complicate your usage or create other weird issues.`,
+    'page.home.feature.title': 'Feature',
+};
+```
+
+create src/locales/zh-TW.ts
+
+```ts
+export default {
+    'page.home.title': '關於',
+    'page.home.desc': `Bear Carousel 是一個直接使用React + Flexbox開發的輪播套件 (非js二次開發包成React)，<br/>
+     並且只包含你需要的功能，沒有太多很酷的效果，因為那些可能會讓你變得不容易使用並且產生其他奇怪的問題`,
+    'page.home.feature.title': '特性',
+};
+```
+
 
 in your src/app.tsx add  (is not global state)
 
 ```tsx
-import {StateControlLocaleProvider} from 'bear-react-locale';
+import {StateControlLocaleProvider} from '@acrool/react-locale';
 import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
 
 <StateControlLocaleProvider 
     localeDictionaries={localeDictionaries}
     defaultLocale={DEFAULT_LOCALE}
-    persistKey="bear-example"
+    persistKey="acrool-example"
     isReMountWithChangeLocale={true} // option: If you want to change the language, re-mount
 >
     <AppRoute/>
@@ -70,7 +92,7 @@ if you use redux(global state) link locale, your can create custom Provider in y
 
 ```tsx
 import React, {Children} from 'react';
-import {LocaleProvider} from 'bear-react-locale';
+import {LocaleProvider} from '@acrool/react-locale';
 import {useDispatch, useSelector} from 'react-redux';
 import {localeDictionaries, DEFAULT_LOCALE, ELocales} from 'config/locale';
 
@@ -125,7 +147,7 @@ const App = () => {
 
 function component hook
 ```tsx
-import {useLocale} from 'bear-react-locale';
+import {useLocale} from '@acrool/react-locale';
 
 const {i18n} = useLocale();
 
@@ -134,14 +156,14 @@ return <div>{i18n('page.promotion.title', {defaultMessage: 'promotions', params:
 
 global function (in not function component) `only in provider children component`
 ```
-import {translateI18n} from 'bear-react-locale';
+import {translateI18n} from '@acrool/react-locale';
 translateI18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'taiwan'}})
 ```
 
 
 There is also a codesandbox template that you can fork and play with it:
 
-[![Edit react-editext-template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/bear-react-locale-ejk43)
+[![Edit react-editext-template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/@acrool/react-locale-ejk43)
 
 [Component and setup docs](./docs/component.md)
 
