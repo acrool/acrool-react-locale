@@ -88,6 +88,46 @@ import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
 ```
 
 
+then in your src/app.tsx
+
+```tsx
+
+const App = () => {
+    return (
+        <Provider store={setup.store}>
+            <LanguageProvider>
+                <AppRoute/>
+            </LanguageProvider>
+        </Provider>
+    );
+};
+```
+
+
+### How to use
+
+function component hook
+
+```tsx
+import {useLocale} from '@acrool/react-locale';
+
+
+const Example = () => {
+    const {i18n} = useLocale();
+    return <div>{i18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'Taiwan'}})}</div>
+}
+```
+
+global function (in not function component) `only in provider children component`
+
+```ts
+import {translateI18n} from '@acrool/react-locale';
+translateI18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'taiwan'}})
+```
+
+
+## Option
+
 if you use redux(global state) link locale, your can create custom Provider in your project
 
 ```tsx
@@ -126,46 +166,6 @@ const LanguageProvider = ({
 export default LanguageProvider;
 
 ```
-
-then in your src/app.tsx
-
-```tsx
-
-const App = () => {
-    return (
-        <Provider store={setup.store}>
-            <LanguageProvider>
-                <AppRoute/>
-            </LanguageProvider>
-        </Provider>
-    );
-};
-```
-
-
-### How to use
-
-function component hook
-```tsx
-import {useLocale} from '@acrool/react-locale';
-
-const {i18n} = useLocale();
-
-return <div>{i18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'taiwan'}})}</div>
-```
-
-global function (in not function component) `only in provider children component`
-```
-import {translateI18n} from '@acrool/react-locale';
-translateI18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'taiwan'}})
-```
-
-
-There is also a codesandbox template that you can fork and play with it:
-
-[![Edit react-editext-template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/@acrool/react-locale-ejk43)
-
-[Component and setup docs](./docs/component.md)
 
 
 ## License
