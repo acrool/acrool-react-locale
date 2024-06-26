@@ -20,6 +20,11 @@
 
 </div>
 
+## Features
+
+- Use intl for packaging
+- Support Hooks
+- Support Nextjs 14+
 
 
 ## Install
@@ -166,6 +171,11 @@ const LanguageProvider = ({
 export default LanguageProvider;
 
 ```
+
+
+There is also a example that you can play with it:
+
+[![Play react-editext-example](https://raw.githubusercontent.com/acrool/acrool-react-locale/main/play-in-example-button.svg)](https://acrool-react-locale.pages.dev)
 
 
 ## License
