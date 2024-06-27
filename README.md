@@ -1,7 +1,7 @@
 # Acrool React Locale
 
 <a href="https://acrool-react-locale.pages.dev/" title="Acrool React Locale - Internationalize Elegant intl library based for Reactjs">
-    <img src="https://acrool-react-locale.pages.dev/og.webp" alt="Acrool React Locale Logo"/>
+    <img src="https://raw.githubusercontent.com/acrool/acrool-react-locale/main/example/public/og.webp" alt="Acrool React Locale Logo"/>
 </a>
 
 <p align="center">

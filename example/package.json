@@ -13,8 +13,12 @@
   "dependencies": {
     "@acrool/react-table": "5.1.1-alpha.0",
     "@acrool/react-locale": "link:..",
+    "@types/dom-to-image": "^2.6.7",
+    "@types/styled-components": "^5.1.26",
+    "styled-components": "5.3.9",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "dom-to-image": "^2.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
