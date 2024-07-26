@@ -47,9 +47,12 @@
     "release:patch": "standard-version -r patch",
     "release:alpha": "standard-version --prerelease alpha"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^18.x",
-    "react-dom": "^18.x"
+    "react-dom": "^18.x",
+    "react-intl": "^5.x",
+    "@formatjs/intl-pluralrules": "^5.x",
+    "@formatjs/intl-relativetimeformat": "^11.x"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
@@ -58,6 +61,8 @@
     "@types/react-dom": "^18.0.11",
     "@types/react-router-dom": "5.3.3",
     "@vitejs/plugin-react-swc": "^3.0.0",
+    "@formatjs/intl-pluralrules": "^5.x",
+    "@formatjs/intl-relativetimeformat": "^11.x",
     "cz-git": "^1.6.1",
     "eslint": "^8.37.0",
     "eslint-config-react-app": "^7.0.1",
@@ -66,6 +71,8 @@
     "rollup-plugin-visualizer": "^5.9.0",
     "standard-version": "^9.5.0",
     "typescript": "^4.9.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "vite": "^4.2.0",
     "vite-plugin-dts": "^2.1.0",
     "vite-plugin-eslint": "^1.8.1",
