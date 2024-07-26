@@ -14,7 +14,7 @@
     "styled-components": "5.3.9"
   },
   "dependencies": {
-    "@acrool/react-table": "5.1.2-alpha.1",
+    "@acrool/react-table": "5.1.2",
     "@acrool/react-locale": "link:..",
     "@acrool/react-grid": "5.2.2",
     "@types/dom-to-image": "^2.6.7",
