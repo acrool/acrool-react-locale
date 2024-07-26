@@ -50,9 +50,11 @@
   "peerDependencies": {
     "react": "^18.x",
     "react-dom": "^18.x",
-    "react-intl": "^5.x",
-    "@formatjs/intl-pluralrules": "^5.x",
-    "@formatjs/intl-relativetimeformat": "^11.x"
+    "react-intl": "^5.x"
+  },
+  "dependencies": {
+    "@formatjs/intl-pluralrules": "^5.2.14",
+    "@formatjs/intl-relativetimeformat": "^11.2.14"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
@@ -61,8 +63,6 @@
     "@types/react-dom": "^18.0.11",
     "@types/react-router-dom": "5.3.3",
     "@vitejs/plugin-react-swc": "^3.0.0",
-    "@formatjs/intl-pluralrules": "^5.x",
-    "@formatjs/intl-relativetimeformat": "^11.x",
     "cz-git": "^1.6.1",
     "eslint": "^8.37.0",
     "eslint-config-react-app": "^7.0.1",
