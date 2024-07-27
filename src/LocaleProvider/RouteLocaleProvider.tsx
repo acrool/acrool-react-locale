@@ -3,16 +3,6 @@ import LocaleProvider from './LocaleProvider';
 import {TLocale, TLocaleDictionaries} from '../types';
 
 
-
-
-if (!Intl.PluralRules) {
-    require('@formatjs/intl-pluralrules/polyfill');
-}
-
-if (!Intl.RelativeTimeFormat) {
-    require('@formatjs/intl-relativetimeformat/polyfill');
-}
-
 interface IProps{
     localeDictionaries: TLocaleDictionaries
     children: JSX.Element
