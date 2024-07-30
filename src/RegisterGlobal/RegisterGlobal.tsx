@@ -29,7 +29,7 @@ class RegisterGlobal extends PureComponent<IProps> {
     };
 
     render() {
-        return undefined;
+        return null;
     }
 }
 

@@ -15,7 +15,7 @@ export interface IState {
  /** ---------------------------------------*/
 const state: IState = {
     locale: 'en-US',
-    setLocale: () => {},
+    setLocale: () => console.log('not yet ready setLocale'),
 };
 
 const LocaleContext = React.createContext<IState>(state);

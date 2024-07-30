@@ -42,8 +42,7 @@ const LocaleProvider = ({
             locale={locale}
             defaultLocale={defaultLocale}
             messages={message}
-            // @ts-ignore
-            textComponent={TranslationWrapper}
+            textComponent={TranslationWrapper as React.ComponentType}
         >
             <Fragment>
                 <RegisterGlobal/>
