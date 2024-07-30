@@ -1,6 +1,6 @@
 import {translateI18n, useLocale} from '@acrool/react-locale';
 import {ELocales} from '../../config/locale';
-import Table from "@acrool/react-table";
+import Table from '@acrool/react-table';
 
 
 

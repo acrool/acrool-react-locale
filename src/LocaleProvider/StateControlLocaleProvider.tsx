@@ -43,4 +43,4 @@ const StateControlLocaleProvider = ({
     </LocaleProvider>;
 };
 
-export default React.memo(StateControlLocaleProvider, () => true);
+export default StateControlLocaleProvider;
