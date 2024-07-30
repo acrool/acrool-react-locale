@@ -52,8 +52,7 @@
     "react-dom": "^18.x"
   },
   "dependencies": {
-    "react-intl": "^5.25.1",
-    "intl-messageformat-parser": "^6.4.4"
+    "react-intl": "5.10.4"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
