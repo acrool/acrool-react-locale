@@ -32,7 +32,7 @@ const RouteLocaleProvider = ({
         defaultLocale={defaultLocale}
         localeDictionaries={localeDictionaries}
     >
-        {Children.only(children)}
+        {children}
     </LocaleProvider>;
 };
 

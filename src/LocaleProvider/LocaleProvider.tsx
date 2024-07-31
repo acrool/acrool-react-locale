@@ -1,10 +1,10 @@
-import React, {Children, Fragment, ReactNode} from 'react';
+import React, {Children, Fragment, ReactNode, useEffect, useState} from 'react';
 import {IntlProvider} from 'react-intl';
 import TranslationWrapper from './TranslationWrapper';
 import RegisterGlobal from '../RegisterGlobal';
 import {formatTranslationMessages} from '../utils';
 import {LocaleContextProvider} from './context';
-import {TLocale, TLocaleDictionaries} from '../types';
+import {II18nTexts, TLocale, TLocaleDictionaries} from '../types';
 
 
 interface IProps{
@@ -34,7 +34,26 @@ const LocaleProvider = ({
     defaultLocale,
     children
 }: IProps) => {
-    const message = formatTranslationMessages(locale, defaultLocale, localeDictionaries);
+
+    const [message, setMessage] = useState<II18nTexts|undefined>(undefined);
+
+    useEffect(() => {
+        formatTranslationMessages(locale, defaultLocale, localeDictionaries)
+            .then(newMessage => {
+                console.log('newMessage', newMessage);
+                setMessage(newMessage);
+            });
+
+    }, [locale, defaultLocale]);
+    
+    
+    const renderChildren = () => {
+        if(!message){
+            return <div>loading...</div>;
+        }
+        
+        return children;  
+    };
 
     return <LocaleContextProvider value={{locale, setLocale}}>
         <IntlProvider
@@ -46,7 +65,7 @@ const LocaleProvider = ({
         >
             <Fragment>
                 <RegisterGlobal/>
-                {Children.only(children)}
+                {renderChildren()}
             </Fragment>
         </IntlProvider>
     </LocaleContextProvider>;

@@ -39,7 +39,7 @@ const StateControlLocaleProvider = ({
         defaultLocale={defaultLocale}
         localeDictionaries={localeDictionaries}
     >
-        {Children.only(children)}
+        {children}
     </LocaleProvider>;
 };
 

@@ -7,7 +7,7 @@ import {II18nTexts, TLocaleDictionaries, TMessage, TLocale} from './types';
  * @param defaultLocale
  * @param localeDictionaries
  */
-export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionaries): II18nTexts => {
+export const formatTranslationMessages = async (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionaries): Promise<II18nTexts> => {
 
     // Get Default Setting
     let messages = localeDictionaries[locale];
@@ -19,10 +19,17 @@ export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocal
             return {};
         }
     }
-    const defaultLocaleDictionary = locale !== defaultLocale ? formatTranslationMessages(defaultLocale, defaultLocale, localeDictionaries) : {};
+    
+    const defaultLocaleDictionary = locale !== defaultLocale ? await formatTranslationMessages(defaultLocale, defaultLocale, localeDictionaries) : {};
+
+    const fetchMessage = typeof messages === 'function' ? (await messages() as {default: II18nTexts}).default: messages;
     const flattenFormattedMessages = (formattedMessages: TMessage, key: string): TMessage => {
-        const formattedMessage = !messages[key] && locale !== defaultLocale ? defaultLocaleDictionary[key] : messages[key];
+        const formattedMessage = !fetchMessage[key] && locale !== defaultLocale ? defaultLocaleDictionary[key] : fetchMessage[key];
+        console.log('formattedMessage', formattedMessage);
         return Object.assign(formattedMessages, {[key]: formattedMessage});
     };
-    return Object.keys(messages).reduce((formattedMessages, key) => flattenFormattedMessages(formattedMessages, key), {});
+    
+    return Object.keys(fetchMessage).reduce((formattedMessages, key) => {
+        return flattenFormattedMessages(formattedMessages, key);
+    }, {});
 };
