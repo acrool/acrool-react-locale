@@ -1,4 +1,4 @@
-import React, {Children, Fragment, ReactNode, useEffect, useState} from 'react';
+import React, {Fragment, ReactNode, useEffect, useState} from 'react';
 import {IntlProvider} from 'react-intl';
 import TranslationWrapper from './TranslationWrapper';
 import RegisterGlobal from '../RegisterGlobal';
@@ -34,18 +34,28 @@ const LocaleProvider = ({
     defaultLocale,
     children
 }: IProps) => {
-
     const [message, setMessage] = useState<II18nTexts|undefined>(undefined);
 
     useEffect(() => {
         formatTranslationMessages(locale, defaultLocale, localeDictionaries)
             .then(newMessage => {
-                console.log('newMessage', newMessage);
                 setMessage(newMessage);
             });
+    }, []);
 
-    }, [locale, defaultLocale]);
-    
+    /**
+     * 當語系異動時
+     * @param newLocale
+     */
+    const onHandleChangeLocale = (newLocale: string) => {
+        formatTranslationMessages(newLocale, defaultLocale, localeDictionaries)
+            .then(newMessage => {
+                requestAnimationFrame(() => {
+                    setMessage(newMessage);
+                    setLocale(newLocale);
+                });
+            });
+    };
     
     const renderChildren = () => {
         if(!message){
@@ -55,7 +65,7 @@ const LocaleProvider = ({
         return children;
     };
 
-    return <LocaleContextProvider value={{locale, setLocale}}>
+    return <LocaleContextProvider value={{locale, setLocale: onHandleChangeLocale}}>
         <IntlProvider
             key={isReMountWithChangeLocale ? locale: undefined} // Using Key will cause the language to be changed and remounted.
             locale={locale}

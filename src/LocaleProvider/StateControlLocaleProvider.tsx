@@ -6,8 +6,9 @@ import {TLocale, TLocaleDictionaries} from '../types';
 interface IProps{
     localeDictionaries: TLocaleDictionaries
     children: ReactNode
-    defaultLocale: TLocale,
-    persistKey: string,
+    defaultLocale: TLocale
+    persistKey: string
+    onChangeLocale?: () => void
 }
 
 
@@ -17,12 +18,14 @@ interface IProps{
  * @param defaultLocale
  * @param persistKey
  * @param children
+ * @param onChangeLocale 當語系異動時
  */
 const StateControlLocaleProvider = ({
     localeDictionaries,
     defaultLocale,
     persistKey= 'persist:acrool-example_locale',
-    children
+    children,
+    onChangeLocale,
 }: IProps) => {
     const initLocale = (window.localStorage.getItem(persistKey) || defaultLocale) as TLocale;
     const [locale, setLocale] = useState<TLocale>(initLocale);
@@ -31,6 +34,9 @@ const StateControlLocaleProvider = ({
         // 同步語系到瀏覽器中
         window.localStorage.setItem(persistKey, locale);
 
+        if(onChangeLocale){
+            onChangeLocale();
+        }
     }, [locale]);
 
     return <LocaleProvider

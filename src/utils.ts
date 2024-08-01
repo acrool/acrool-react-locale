@@ -22,7 +22,7 @@ export const formatTranslationMessages = async (locale: TLocale, defaultLocale: 
     
     const defaultLocaleDictionary = locale !== defaultLocale ? await formatTranslationMessages(defaultLocale, defaultLocale, localeDictionaries) : {};
 
-    const fetchMessage = typeof messages === 'function' ? (await messages() as {default: II18nTexts}).default: messages;
+    const fetchMessage = typeof messages === 'function' ? (await messages()).default: messages;
     const flattenFormattedMessages = (formattedMessages: TMessage, key: string): TMessage => {
         const formattedMessage = !fetchMessage[key] && locale !== defaultLocale ? defaultLocaleDictionary[key] : fetchMessage[key];
         console.log('formattedMessage', formattedMessage);
