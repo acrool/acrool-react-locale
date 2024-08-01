@@ -1,5 +1,5 @@
 import React, {Children, useState} from 'react';
-import LocaleProvider from './LocaleProvider';
+import OriginLocaleProvider from './OriginLocaleProvider';
 import {TLocale, TLocaleDictionaries} from '../types';
 
 
@@ -27,14 +27,14 @@ const RouteLocaleProvider = ({
     const initLocale = (currentLocale || defaultLocale) as TLocale;
     const [locale, setLocale] = useState<TLocale>(initLocale);
 
-    return <LocaleProvider
+    return <OriginLocaleProvider
         locale={locale}
         onChangeLocale={setLocale}
         defaultLocale={defaultLocale}
         localeDictionaries={localeDictionaries}
     >
         {children}
-    </LocaleProvider>;
+    </OriginLocaleProvider>;
 };
 
 export default RouteLocaleProvider;

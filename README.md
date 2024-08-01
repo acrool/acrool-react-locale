@@ -137,7 +137,7 @@ if you use redux(global state) link locale, your can create custom Provider in y
 
 ```tsx
 import React, {Children} from 'react';
-import {LocaleProvider} from '@acrool/react-locale';
+import LocaleProvider from '@acrool/react-locale';
 import {useDispatch, useSelector} from 'react-redux';
 import {localeDictionaries, DEFAULT_LOCALE, ELocales} from 'config/locale';
 

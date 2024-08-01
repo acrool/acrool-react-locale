@@ -1,89 +1,56 @@
-import React, {Fragment, ReactNode, useEffect, useState} from 'react';
-import {IntlProvider} from 'react-intl';
-import TranslationWrapper from './TranslationWrapper';
-import RegisterGlobal from '../RegisterGlobal';
-import {formatTranslationMessages} from '../utils';
-import {LocaleContextProvider} from './context';
-import {II18nTexts, TLocale, TLocaleDictionaries, TOnchangeLocale, TRenderLoading} from '../types';
+import React, {ReactNode, useEffect, useState} from 'react';
+import OriginLocaleProvider from './OriginLocaleProvider';
+import {TLocale, TLocaleDictionaries, TOnchangeLocale, TRenderLoading} from '../types';
 
 
 interface IProps{
     localeDictionaries: TLocaleDictionaries
     children: ReactNode
-    isReMountWithChangeLocale?: boolean,
-    locale: TLocale,
-    onChangeLocale: TOnchangeLocale,
-    defaultLocale: TLocale,
+    defaultLocale: TLocale
+    persistKey?: string
+    onChangeLocale?: TOnchangeLocale
     renderLoading?: TRenderLoading
 }
 
 
 /**
- * Locale Provider
+ * State Control Locale Provider
  * @param localeDictionaries
- * @param isReMountWithChangeLocale
- * @param locale
- * @param setLocale
  * @param defaultLocale
+ * @param persistKey
  * @param children
+ * @param onChangeLocale 當語系異動時
+ * @param renderLoading
  */
 const LocaleProvider = ({
     localeDictionaries,
-    isReMountWithChangeLocale = false,
-    locale,
-    onChangeLocale,
     defaultLocale,
+    persistKey = 'persist:acrool-example_locale',
+    children,
+    onChangeLocale,
     renderLoading,
-    children
 }: IProps) => {
-    const [message, setMessage] = useState<II18nTexts|undefined>(undefined);
+    const initLocale = (window.localStorage.getItem(persistKey) || defaultLocale) as TLocale;
+    const [locale, setLocale] = useState<TLocale>(initLocale);
 
     useEffect(() => {
-        formatTranslationMessages(locale, defaultLocale, localeDictionaries)
-            .then(newMessage => {
-                setMessage(newMessage);
-            });
-    }, []);
+        // 同步語系到瀏覽器中
+        window.localStorage.setItem(persistKey, locale);
 
-    /**
-     * 當語系異動時
-     * @param newLocale
-     */
-    const onHandleChangeLocale = (newLocale: string) => {
-        formatTranslationMessages(newLocale, defaultLocale, localeDictionaries)
-            .then(newMessage => {
-                requestAnimationFrame(() => {
-                    setMessage(newMessage);
-                    onChangeLocale(newLocale);
-                });
-            });
-    };
-    
-    const renderChildren = () => {
-        if(!message){
-            if(renderLoading){
-                return renderLoading();
-            }
-            return <div>loading...</div>;
+        if(onChangeLocale){
+            onChangeLocale(locale);
         }
-        
-        return children;
-    };
+    }, [locale]);
 
-    return <LocaleContextProvider value={{locale, setLocale: onHandleChangeLocale}}>
-        <IntlProvider
-            key={isReMountWithChangeLocale ? locale: undefined} // Using Key will cause the language to be changed and remounted.
-            locale={locale}
-            defaultLocale={defaultLocale}
-            messages={message}
-            textComponent={TranslationWrapper as React.ComponentType}
-        >
-            <Fragment>
-                <RegisterGlobal/>
-                {renderChildren()}
-            </Fragment>
-        </IntlProvider>
-    </LocaleContextProvider>;
+    return <OriginLocaleProvider
+        locale={locale}
+        onChangeLocale={setLocale}
+        defaultLocale={defaultLocale}
+        renderLoading={renderLoading}
+        localeDictionaries={localeDictionaries}
+    >
+        {children}
+    </OriginLocaleProvider>;
 };
 
 export default LocaleProvider;
