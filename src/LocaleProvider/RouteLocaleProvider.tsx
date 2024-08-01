@@ -12,6 +12,7 @@ interface IProps{
 
 /**
  * For SSG Route
+ * 通常使用路徑上帶有語系，直接設定語系內容
  * @param localeDictionaries
  * @param currentLocale
  * @param defaultLocale
@@ -28,7 +29,7 @@ const RouteLocaleProvider = ({
 
     return <LocaleProvider
         locale={locale}
-        setLocale={setLocale}
+        onChangeLocale={setLocale}
         defaultLocale={defaultLocale}
         localeDictionaries={localeDictionaries}
     >

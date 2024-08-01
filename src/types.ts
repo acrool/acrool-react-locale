@@ -1,4 +1,5 @@
 import {MessageFormatElement} from 'intl-messageformat-parser';
+import {ReactNode} from 'react';
 
 export type TLocale = string
 
@@ -22,3 +23,6 @@ interface IArgs {
 
 export type TTranslateI18n = (id: string, options?: {def?: string, args?: IArgs}) => string
 
+
+export type TRenderLoading = () => ReactNode;
+export type TOnchangeLocale = (locale: string) => void;

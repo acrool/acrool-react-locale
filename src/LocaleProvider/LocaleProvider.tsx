@@ -4,7 +4,7 @@ import TranslationWrapper from './TranslationWrapper';
 import RegisterGlobal from '../RegisterGlobal';
 import {formatTranslationMessages} from '../utils';
 import {LocaleContextProvider} from './context';
-import {II18nTexts, TLocale, TLocaleDictionaries} from '../types';
+import {II18nTexts, TLocale, TLocaleDictionaries, TOnchangeLocale, TRenderLoading} from '../types';
 
 
 interface IProps{
@@ -12,8 +12,9 @@ interface IProps{
     children: ReactNode
     isReMountWithChangeLocale?: boolean,
     locale: TLocale,
-    setLocale: (locale: string) => void,
+    onChangeLocale: TOnchangeLocale,
     defaultLocale: TLocale,
+    renderLoading?: TRenderLoading
 }
 
 
@@ -30,8 +31,9 @@ const LocaleProvider = ({
     localeDictionaries,
     isReMountWithChangeLocale = false,
     locale,
-    setLocale,
+    onChangeLocale,
     defaultLocale,
+    renderLoading,
     children
 }: IProps) => {
     const [message, setMessage] = useState<II18nTexts|undefined>(undefined);
@@ -52,13 +54,16 @@ const LocaleProvider = ({
             .then(newMessage => {
                 requestAnimationFrame(() => {
                     setMessage(newMessage);
-                    setLocale(newLocale);
+                    onChangeLocale(newLocale);
                 });
             });
     };
     
     const renderChildren = () => {
         if(!message){
+            if(renderLoading){
+                return renderLoading();
+            }
             return <div>loading...</div>;
         }
         

@@ -25,7 +25,6 @@ export const formatTranslationMessages = async (locale: TLocale, defaultLocale: 
     const fetchMessage = typeof messages === 'function' ? (await messages()).default: messages;
     const flattenFormattedMessages = (formattedMessages: TMessage, key: string): TMessage => {
         const formattedMessage = !fetchMessage[key] && locale !== defaultLocale ? defaultLocaleDictionary[key] : fetchMessage[key];
-        console.log('formattedMessage', formattedMessage);
         return Object.assign(formattedMessages, {[key]: formattedMessage});
     };
     
