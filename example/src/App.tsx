@@ -1,6 +1,6 @@
 import './App.css';
 import Example from './views/Example';
-import {StateControlLocaleProvider} from '@acrool/react-locale';
+import LocaleProvider from '@acrool/react-locale';
 import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
 import Banner from './components/Banner';
 import {GridThemeProvider} from '@acrool/react-grid';
@@ -14,13 +14,13 @@ function App() {
             <div className="App">
                 <Banner/>
 
-                <StateControlLocaleProvider
+                <LocaleProvider
                     localeDictionaries={localeDictionaries}
                     defaultLocale={DEFAULT_LOCALE}
                     persistKey="persist:acrool-example"
                 >
                     <Example/>
-                </StateControlLocaleProvider>
+                </LocaleProvider>
 
             </div>
         </GridThemeProvider>
