@@ -52,7 +52,7 @@ const LocaleProvider = ({
             return <div>loading...</div>;
         }
         
-        return children;  
+        return children;
     };
 
     return <LocaleContextProvider value={{locale, setLocale}}>
