@@ -1,55 +1,56 @@
-import React, {Children, Fragment, ReactNode} from 'react';
-import {IntlProvider} from 'react-intl';
-import TranslationWrapper from './TranslationWrapper';
-import RegisterGlobal from '../RegisterGlobal';
-import {formatTranslationMessages} from '../utils';
-import {LocaleContextProvider} from './context';
-import {TLocale, TLocaleDictionaries} from '../types';
+import React, {ReactNode, useEffect, useState} from 'react';
+import OriginLocaleProvider from './OriginLocaleProvider';
+import {TLocale, TLocaleDictionaries, TOnchangeLocale, TRenderLoading} from '../types';
 
 
 interface IProps{
     localeDictionaries: TLocaleDictionaries
     children: ReactNode
-    isReMountWithChangeLocale?: boolean,
-    locale: TLocale,
-    setLocale: (locale: string) => void,
-    defaultLocale: TLocale,
+    defaultLocale: TLocale
+    persistKey?: string
+    onChangeLocale?: TOnchangeLocale
+    renderLoading?: TRenderLoading
 }
 
 
 /**
- * Locale Provider
+ * State Control Locale Provider
  * @param localeDictionaries
- * @param isReMountWithChangeLocale
- * @param locale
- * @param setLocale
  * @param defaultLocale
+ * @param persistKey
  * @param children
+ * @param onChangeLocale 當語系異動時
+ * @param renderLoading
  */
 const LocaleProvider = ({
     localeDictionaries,
-    isReMountWithChangeLocale = false,
-    locale,
-    setLocale,
     defaultLocale,
-    children
+    persistKey = 'persist:acrool-example_locale',
+    children,
+    onChangeLocale,
+    renderLoading,
 }: IProps) => {
-    const message = formatTranslationMessages(locale, defaultLocale, localeDictionaries);
+    const initLocale = (window.localStorage.getItem(persistKey) || defaultLocale) as TLocale;
+    const [locale, setLocale] = useState<TLocale>(initLocale);
 
-    return <LocaleContextProvider value={{locale, setLocale}}>
-        <IntlProvider
-            key={isReMountWithChangeLocale ? locale: undefined} // Using Key will cause the language to be changed and remounted.
-            locale={locale}
-            defaultLocale={defaultLocale}
-            messages={message}
-            textComponent={TranslationWrapper as React.ComponentType}
-        >
-            <Fragment>
-                <RegisterGlobal/>
-                {Children.only(children)}
-            </Fragment>
-        </IntlProvider>
-    </LocaleContextProvider>;
+    useEffect(() => {
+        // 同步語系到瀏覽器中
+        window.localStorage.setItem(persistKey, locale);
+
+        if(onChangeLocale){
+            onChangeLocale(locale);
+        }
+    }, [locale]);
+
+    return <OriginLocaleProvider
+        locale={locale}
+        onChangeLocale={setLocale}
+        defaultLocale={defaultLocale}
+        renderLoading={renderLoading}
+        localeDictionaries={localeDictionaries}
+    >
+        {children}
+    </OriginLocaleProvider>;
 };
 
 export default LocaleProvider;

@@ -7,7 +7,7 @@ import '@acrool/react-table/dist/themes/acrool.css';
 import '@acrool/react-grid/dist/index.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <App />
-    </React.StrictMode>,
+    // </React.StrictMode>,
 );
