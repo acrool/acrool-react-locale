@@ -79,17 +79,43 @@ export default {
 in your src/app.tsx add  (is not global state)
 
 ```tsx
-import {StateControlLocaleProvider} from '@acrool/react-locale';
-import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';
+import {BlockWrapper} from '@acrool/react-block';
+import LocaleProvider from '@acrool/react-locale';
+import dayjs from 'dayjs';
+import React from 'react';
+import styled from 'styled-components';
 
-<StateControlLocaleProvider 
-    localeDictionaries={localeDictionaries}
-    defaultLocale={DEFAULT_LOCALE}
-    persistKey="acrool-example"
-    isReMountWithChangeLocale={true} // option: If you want to change the language, re-mount
->
-    <AppRoute/>
-</StateControlLocaleProvider>
+import {DEFAULT_LOCALE, serverDictionaries} from '@/config/locale';
+import {persistKey} from '@/config/app';
+
+interface IProps {
+    children: JSX.Element
+}
+
+
+/**
+ * 多語系提供者
+ * @param children
+ */
+const ReactLocaleProvider = ({
+     children
+ }: IProps) => {
+    const handleChangeLocale = (newLocale: string) => {
+        dayjs.locale(newLocale);
+    };
+
+    return <LocaleProvider
+        localeDictionaries={serverDictionaries}
+        defaultLocale={DEFAULT_LOCALE}
+        onChangeLocale={handleChangeLocale}
+        renderLoading={() => <Loader/>}
+        persistKey={`${persistKey}-locale`}
+    >
+        {children}
+    </LocaleProvider>;
+};
+
+export default ReactLocaleProvider;
 ```
 
 
@@ -100,9 +126,9 @@ then in your src/app.tsx
 const App = () => {
     return (
         <Provider store={setup.store}>
-            <LanguageProvider>
+            <ReactLocaleProvider>
                 <AppRoute/>
-            </LanguageProvider>
+            </ReactLocaleProvider>
         </Provider>
     );
 };
@@ -137,7 +163,7 @@ if you use redux(global state) link locale, your can create custom Provider in y
 
 ```tsx
 import React, {Children} from 'react';
-import LocaleProvider from '@acrool/react-locale';
+import {OriginLocaleProvider} from '@acrool/react-locale';
 import {useDispatch, useSelector} from 'react-redux';
 import {localeDictionaries, DEFAULT_LOCALE, ELocales} from 'config/locale';
 
@@ -148,7 +174,7 @@ interface IProps {
     children: JSX.Element
 }
 
-const LanguageProvider = ({
+const ReactLocaleProvider = ({
     children
 }: IProps) => {
     const dispatch = useDispatch();
@@ -158,18 +184,17 @@ const LanguageProvider = ({
         dispatch(actions.setLocale({locale}));
     };
 
-    return <LocaleProvider
+    return <OriginLocaleProvider
         localeDictionaries={localeDictionaries}
         defaultLocale={DEFAULT_LOCALE}
         locale={locale}
         setLocale={(locale: string ) => handleChangeLocale(locale as ELocales)}
     >
         {Children.only(children)}
-    </LocaleProvider>;
+    </OriginLocaleProvider>;
 };
 
-export default LanguageProvider;
-
+export default ReactLocaleProvider;
 ```
 
 
