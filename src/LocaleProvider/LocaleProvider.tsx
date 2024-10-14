@@ -44,4 +44,6 @@ const LocaleProvider = ({
 
 };
 
+export {LocaleProvider};
+
 export default React.memo(LocaleProvider, (a, b) => a.locale === b.locale && a.defaultLocale === b.defaultLocale);
