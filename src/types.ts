@@ -21,7 +21,12 @@ interface IArgs {
     [key: string]: string|number,
 }
 
-export type TTranslateI18n = (id: string, options?: {def?: string, args?: IArgs}) => string
+export type TTranslateI18n<T extends Record<string, string>> = <
+    K extends keyof T
+>(
+    id: K,
+    options?: { def?: string; args?: IArgs }
+) => string;
 
 
 export type TRenderLoading = () => ReactNode;

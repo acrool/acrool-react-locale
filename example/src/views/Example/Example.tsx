@@ -1,7 +1,7 @@
 import {translateI18n, useLocale} from '@acrool/react-locale';
 import {ELocales} from '../../config/locale';
 import Table from '@acrool/react-table';
-
+import enUS from '../../locales/en-US';
 
 
 
@@ -10,7 +10,7 @@ export const getTextNotComponent = () => {
 };
 
 const Example = () => {
-    const {i18n, setLocale, locale} = useLocale();
+    const {i18n, setLocale, locale} = useLocale<typeof enUS>();
 
     return <div>
 
