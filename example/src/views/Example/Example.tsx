@@ -10,7 +10,7 @@ export const getTextNotComponent = () => {
 };
 
 const Example = () => {
-    const {i18n, setLocale, locale} = useLocale<typeof enUS>();
+    const {t, setLocale, locale} = useLocale<typeof enUS>();
 
     return <div>
 
@@ -32,17 +32,17 @@ const Example = () => {
             gap="15px"
             bodyLineHeight="60px"
             title={{
-                title: {text: i18n('page.home.field.title', {def: 'Title'}), col: 150},
-                name: {text: i18n('page.home.field.name', {def: 'Name'}), col: 'auto'}
+                title: {text: t('page.home.field.title', {def: 'Title'}), col: 150},
+                name: {text: t('page.home.field.name', {def: 'Name'}), col: 'auto'}
             }}
             data={[
                 {
                     id: 1,
                     field: {
-                        title: i18n('page.home.field.inComponent', {def: 'in component'}),
+                        title: t('page.home.field.inComponent', {def: 'in component'}),
                         name: <div>
                             <div className="text-area-overflow text-area-overflow-2">
-                                {i18n('page.home.desc')}
+                                {t('page.home.desc')}
                             </div>
                         </div>,
                     }
@@ -50,7 +50,7 @@ const Example = () => {
                 {
                     id: 2,
                     field: {
-                        title: i18n('page.home.field.notInComponent', {def: 'not in component'}),
+                        title: t('page.home.field.notInComponent', {def: 'not in component'}),
                         name: <div className="text-area-overflow text-area-overflow-2">{getTextNotComponent()}</div>,
                     }
                 },

@@ -144,8 +144,8 @@ import {useLocale} from '@acrool/react-locale';
 
 
 const Example = () => {
-    const {i18n} = useLocale();
-    return <div>{i18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'Taiwan'}})}</div>
+    const {t} = useLocale();
+    return <div>{t('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'Taiwan'}})}</div>
 }
 ```
 
