@@ -14,7 +14,7 @@ interface IProps{
     locale: TLocale,
     onChangeLocale: TOnchangeLocale,
     defaultLocale: TLocale,
-    renderLoading?: TRenderLoading
+    // renderLoading?: TRenderLoading
 }
 
 
@@ -33,7 +33,7 @@ const OriginLocaleProvider = ({
     locale,
     onChangeLocale,
     defaultLocale,
-    renderLoading,
+    // renderLoading,
     children
 }: IProps) => {
     const [message, setMessage] = useState<II18nTexts|undefined>(undefined);
@@ -58,14 +58,18 @@ const OriginLocaleProvider = ({
                 });
             });
     };
-    
+
+
+    /**
+     * Render child
+     */
     const renderChildren = () => {
-        if(!message){
-            if(renderLoading){
-                return renderLoading();
-            }
-            return <div>loading...</div>;
-        }
+        // if(!message){
+        //     if(renderLoading){
+        //         return renderLoading();
+        //     }
+        //     return <div>loading...</div>;
+        // }
         
         return children;
     };

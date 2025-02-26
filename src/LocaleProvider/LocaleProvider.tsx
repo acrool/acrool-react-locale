@@ -1,6 +1,6 @@
 import React, {ReactNode, useEffect, useState} from 'react';
 import OriginLocaleProvider from './OriginLocaleProvider';
-import {TLocale, TLocaleDictionaries, TOnchangeLocale, TRenderLoading} from '../types';
+import {TLocale, TLocaleDictionaries, TOnchangeLocale} from '../types';
 
 
 interface IProps{
@@ -9,7 +9,7 @@ interface IProps{
     defaultLocale: TLocale
     persistKey?: string
     onChangeLocale?: TOnchangeLocale
-    renderLoading?: TRenderLoading
+    // renderLoading?: TRenderLoading
 }
 
 
@@ -20,7 +20,6 @@ interface IProps{
  * @param persistKey
  * @param children
  * @param onChangeLocale 當語系異動時
- * @param renderLoading
  */
 const LocaleProvider = ({
     localeDictionaries,
@@ -28,7 +27,6 @@ const LocaleProvider = ({
     persistKey = 'persist:acrool-example_locale',
     children,
     onChangeLocale,
-    renderLoading,
 }: IProps) => {
     const initLocale = (window.localStorage.getItem(persistKey) || defaultLocale) as TLocale;
     const [locale, setLocale] = useState<TLocale>(initLocale);
@@ -46,7 +44,7 @@ const LocaleProvider = ({
         locale={locale}
         onChangeLocale={setLocale}
         defaultLocale={defaultLocale}
-        renderLoading={renderLoading}
+        // renderLoading={renderLoading}
         localeDictionaries={localeDictionaries}
     >
         {children}
