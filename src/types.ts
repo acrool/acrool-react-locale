@@ -8,8 +8,11 @@ export interface II18nTexts {
     [i18nKey: string]: string
 }
 
-export type TLocaleDictionaries = {
+export type TAsyncLocaleDictionaries = {
     [localeCode in TLocale]: II18nTexts | (() => Promise<{ default: II18nTexts }>)
+}
+export type TLocaleDictionaries = {
+    [localeCode in TLocale]: II18nTexts
 }
 
 

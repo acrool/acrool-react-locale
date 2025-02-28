@@ -165,10 +165,10 @@ if you use redux(global state) link locale, your can create custom Provider in y
 import React, {Children} from 'react';
 import {OriginLocaleProvider} from '@acrool/react-locale';
 import {useDispatch, useSelector} from 'react-redux';
-import {localeDictionaries, DEFAULT_LOCALE, ELocales} from 'config/locale';
+import {localeDictionaries, DEFAULT_LOCALE, ELocales} from './config/locale';
 
 // Stores
-import {selector, actions} from 'store/main/language';
+import {selector, actions} from './store/main/language';
 
 interface IProps {
     children: JSX.Element

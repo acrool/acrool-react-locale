@@ -2,7 +2,7 @@ import React, {Fragment, ReactNode, useEffect, useState} from 'react';
 import {IntlProvider} from 'react-intl';
 import TranslationWrapper from './TranslationWrapper';
 import RegisterGlobal from '../RegisterGlobal';
-import {formatTranslationMessages} from '../utils';
+import {asyncFormatTranslationMessages, formatTranslationMessages, isEmpty} from '../utils';
 import {LocaleContextProvider} from './context';
 import {II18nTexts, TLocale, TLocaleDictionaries, TOnchangeLocale, TRenderLoading} from '../types';
 
@@ -36,10 +36,12 @@ const OriginLocaleProvider = ({
     renderLoading,
     children
 }: IProps) => {
-    const [message, setMessage] = useState<II18nTexts|undefined>(undefined);
+    const [message, setMessage] = useState<II18nTexts|undefined>(
+        formatTranslationMessages(locale, defaultLocale, localeDictionaries),
+    );
 
     useEffect(() => {
-        formatTranslationMessages(locale, defaultLocale, localeDictionaries)
+        asyncFormatTranslationMessages(locale, defaultLocale, localeDictionaries)
             .then(newMessage => {
                 setMessage(newMessage);
             });
@@ -50,7 +52,7 @@ const OriginLocaleProvider = ({
      * @param newLocale
      */
     const onHandleChangeLocale = (newLocale: string) => {
-        formatTranslationMessages(newLocale, defaultLocale, localeDictionaries)
+        asyncFormatTranslationMessages(newLocale, defaultLocale, localeDictionaries)
             .then(newMessage => {
                 requestAnimationFrame(() => {
                     setMessage(newMessage);
@@ -60,11 +62,8 @@ const OriginLocaleProvider = ({
     };
     
     const renderChildren = () => {
-        if(!message){
-            if(renderLoading){
-                return renderLoading();
-            }
-            return <div>loading...</div>;
+        if(isEmpty(message)){
+            return renderLoading ? renderLoading(): <div>loading...</div>;
         }
         
         return children;
