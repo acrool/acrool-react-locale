@@ -2,7 +2,6 @@ import React, {Fragment, ReactNode} from 'react';
 import {IntlProvider} from 'react-intl';
 import TranslationWrapper from './TranslationWrapper';
 import RegisterGlobal from '../RegisterGlobal';
-import {isEmpty} from '../utils';
 import {LocaleContextProvider} from './context';
 import {
     TLocale,
@@ -20,7 +19,6 @@ interface IProps{
     locale: TLocale,
     onChangeLocale: TOnchangeLocale,
     defaultLocale: TLocale,
-    renderLoading?: TRenderLoading
 }
 
 
@@ -39,7 +37,6 @@ const OriginLocaleProvider = ({
     locale,
     onChangeLocale,
     defaultLocale,
-    renderLoading,
     children
 }: IProps) => {
     const {messages, setMessages} = useMessages({locale, defaultLocale, localeDictionaries});
@@ -53,17 +50,6 @@ const OriginLocaleProvider = ({
         onChangeLocale(newLocale);
     };
 
-    /**
-     * 渲染內容
-     */
-    const renderChildren = () => {
-        if(isEmpty(messages)){
-            return renderLoading ? renderLoading(): <div>loading...</div>;
-        }
-        
-        return children;
-    };
-
     return <LocaleContextProvider value={{locale, setLocale: onHandleChangeLocale}}>
         <IntlProvider
             key={isReMountWithChangeLocale ? locale: undefined} // Using Key will cause the language to be changed and remounted.
@@ -74,7 +60,7 @@ const OriginLocaleProvider = ({
         >
             <Fragment>
                 <RegisterGlobal/>
-                {renderChildren()}
+                {children}
             </Fragment>
         </IntlProvider>
     </LocaleContextProvider>;

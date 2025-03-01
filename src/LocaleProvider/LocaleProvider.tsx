@@ -28,7 +28,6 @@ const LocaleProvider = ({
     persistKey = 'persist:acrool-example_locale',
     children,
     onChangeLocale,
-    renderLoading,
 }: IProps) => {
     const initLocale = (window.localStorage.getItem(persistKey) || defaultLocale) as TLocale;
     const [locale, setLocale] = useState<TLocale>(initLocale);
@@ -46,7 +45,6 @@ const LocaleProvider = ({
         locale={locale}
         onChangeLocale={setLocale}
         defaultLocale={defaultLocale}
-        renderLoading={renderLoading}
         localeDictionaries={localeDictionaries}
     >
         {children}
