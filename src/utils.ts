@@ -1,4 +1,4 @@
-import {II18nTexts, TLocaleDictionaries, TMessage, TLocale, TAsyncLocaleDictionaries} from './types';
+import {II18nTexts, TLocaleDictionaries, TMessage, TLocale, TLocaleDictionariesAsync} from './types';
 
 
 export type Empty = null | undefined | false | '' | 0;
@@ -35,7 +35,7 @@ export function isEmpty<T>(value: T, checkOption?: {
  * @param defaultLocale
  * @param localeDictionaries
  */
-export const asyncFormatTranslationMessages = async (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TAsyncLocaleDictionaries): Promise<II18nTexts> => {
+export const formatTranslationMessagesAsync = async (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionariesAsync): Promise<II18nTexts> => {
 
     // Get Default Setting
     let messages = localeDictionaries[locale];
