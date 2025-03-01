@@ -18,7 +18,7 @@ const useMessages = ({
     );
 
     useEffect(() => {
-        const newMessage = formatTranslationMessages(locale, defaultLocale, localeDictionaries)
+        const newMessage = formatTranslationMessages(locale, defaultLocale, localeDictionaries);
         setMessages(newMessage);
     }, []);
 

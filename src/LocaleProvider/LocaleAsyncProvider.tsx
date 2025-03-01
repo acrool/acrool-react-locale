@@ -1,5 +1,5 @@
 import React, {ReactNode, useEffect, useState} from 'react';
-import OriginLocaleProvider from './OriginLocaleProvider';
+import OriginLocaleAsyncProvider from './OriginLocaleAsyncProvider';
 import {TLocaleDictionariesAsync, TLocale, TOnchangeLocale, TRenderLoading} from '../types';
 
 
@@ -22,7 +22,7 @@ interface IProps{
  * @param onChangeLocale 當語系異動時
  * @param renderLoading
  */
-const LocaleProvider = ({
+const LocaleAsyncProvider = ({
     localeDictionaries,
     defaultLocale,
     persistKey = 'persist:acrool-example_locale',
@@ -42,7 +42,7 @@ const LocaleProvider = ({
         }
     }, [locale]);
 
-    return <OriginLocaleProvider
+    return <OriginLocaleAsyncProvider
         locale={locale}
         onChangeLocale={setLocale}
         defaultLocale={defaultLocale}
@@ -50,7 +50,7 @@ const LocaleProvider = ({
         localeDictionaries={localeDictionaries}
     >
         {children}
-    </OriginLocaleProvider>;
+    </OriginLocaleAsyncProvider>;
 };
 
-export default LocaleProvider;
+export default LocaleAsyncProvider;
