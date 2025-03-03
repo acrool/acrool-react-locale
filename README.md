@@ -80,7 +80,7 @@ in your src/app.tsx add  (is not global state)
 
 ```tsx
 import {BlockWrapper} from '@acrool/react-block';
-import LocaleProvider from '@acrool/react-locale';
+import {LocaleAsyncProvider} from '@acrool/react-locale';
 import dayjs from 'dayjs';
 import React from 'react';
 import styled from 'styled-components';
@@ -104,7 +104,7 @@ const ReactLocaleProvider = ({
         dayjs.locale(newLocale);
     };
 
-    return <LocaleProvider
+    return <LocaleAsyncProvider
         localeDictionaries={serverDictionaries}
         defaultLocale={DEFAULT_LOCALE}
         onChangeLocale={handleChangeLocale}
@@ -112,7 +112,7 @@ const ReactLocaleProvider = ({
         persistKey={`${persistKey}-locale`}
     >
         {children}
-    </LocaleProvider>;
+    </LocaleAsyncProvider>;
 };
 
 export default ReactLocaleProvider;
@@ -144,8 +144,8 @@ import {useLocale} from '@acrool/react-locale';
 
 
 const Example = () => {
-    const {i18n} = useLocale();
-    return <div>{i18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'Taiwan'}})}</div>
+    const {t} = useLocale();
+    return <div>{t('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'Taiwan'}})}</div>
 }
 ```
 
@@ -165,10 +165,10 @@ if you use redux(global state) link locale, your can create custom Provider in y
 import React, {Children} from 'react';
 import {OriginLocaleProvider} from '@acrool/react-locale';
 import {useDispatch, useSelector} from 'react-redux';
-import {localeDictionaries, DEFAULT_LOCALE, ELocales} from 'config/locale';
+import {localeDictionaries, DEFAULT_LOCALE, ELocales} from './config/locale';
 
 // Stores
-import {selector, actions} from 'store/main/language';
+import {selector, actions} from './store/main/language';
 
 interface IProps {
     children: JSX.Element
@@ -195,6 +195,58 @@ const ReactLocaleProvider = ({
 };
 
 export default ReactLocaleProvider;
+```
+
+## Storybook use (Not async load locale dictionaries)
+
+```tsx
+import {PartialStoryFn, Renderer} from '@storybook/types';
+import {DEFAULT_LOCALE, ELocales} from "@/config/locale";
+import {persistKey} from "@/config/app";
+import LocaleProvider, {TLocaleDictionaries} from "@acrool/react-locale";
+import localeEnUS from "@/locales/en-US";
+
+
+const localeDictionaries: TLocaleDictionaries = {
+    [ELocales.enUS]: localeEnUS,
+};
+const withI18next = (StoryFn: PartialStoryFn<Renderer>) => {
+
+    return (
+        <LocaleProvider
+            localeDictionaries={localeDictionaries}
+            defaultLocale={DEFAULT_LOCALE}
+            persistKey={`${persistKey}-locale`}
+        >
+            <StoryFn/>
+        </LocaleProvider>
+    );
+};
+
+
+
+// storybook preview.tsx
+const preview: Preview = {
+    parameters: {
+        controls: {
+            matchers: {
+                color: /(background|color)$/i,
+                date: /Date$/i,
+            },
+        },
+    },
+    decorators: [
+        withI18next,
+        (Story) => (
+            <GridThemeProvider>
+                <>
+                    <Story/>
+                    {SvgSymbol}
+                </>
+            </GridThemeProvider>
+        ),
+    ],
+};
 ```
 
 

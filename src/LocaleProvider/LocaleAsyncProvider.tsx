@@ -1,10 +1,10 @@
 import React, {ReactNode, useEffect, useState} from 'react';
-import OriginLocaleProvider from './OriginLocaleProvider';
-import {TLocaleDictionaries, TLocale, TOnchangeLocale, TRenderLoading} from '../types';
+import OriginLocaleAsyncProvider from './OriginLocaleAsyncProvider';
+import {TLocaleDictionariesAsync, TLocale, TOnchangeLocale, TRenderLoading} from '../types';
 
 
 interface IProps{
-    localeDictionaries: TLocaleDictionaries
+    localeDictionaries: TLocaleDictionariesAsync
     children: ReactNode
     defaultLocale: TLocale
     persistKey?: string
@@ -22,12 +22,13 @@ interface IProps{
  * @param onChangeLocale 當語系異動時
  * @param renderLoading
  */
-const LocaleProvider = ({
+const LocaleAsyncProvider = ({
     localeDictionaries,
     defaultLocale,
     persistKey = 'persist:acrool-example_locale',
     children,
     onChangeLocale,
+    renderLoading,
 }: IProps) => {
     const initLocale = (window.localStorage.getItem(persistKey) || defaultLocale) as TLocale;
     const [locale, setLocale] = useState<TLocale>(initLocale);
@@ -41,14 +42,15 @@ const LocaleProvider = ({
         }
     }, [locale]);
 
-    return <OriginLocaleProvider
+    return <OriginLocaleAsyncProvider
         locale={locale}
         onChangeLocale={setLocale}
         defaultLocale={defaultLocale}
+        renderLoading={renderLoading}
         localeDictionaries={localeDictionaries}
     >
         {children}
-    </OriginLocaleProvider>;
+    </OriginLocaleAsyncProvider>;
 };
 
-export default LocaleProvider;
+export default LocaleAsyncProvider;

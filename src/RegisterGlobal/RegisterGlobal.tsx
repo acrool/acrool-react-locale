@@ -7,7 +7,7 @@
 
 import {PureComponent} from 'react';
 import {injectIntl, IntlShape} from 'react-intl';
-import { TTranslateI18n } from '../types';
+import {II18nTexts, TTranslateI18n} from '../types';
 
 
 
@@ -15,17 +15,17 @@ interface IProps {
     intl: IntlShape,
 }
 
-export let translateI18n: TTranslateI18n = (id, options) => id;
+export let translateI18n: TTranslateI18n<any> = (id, options) => id as string;
 
-class RegisterGlobal extends PureComponent<IProps> {
+class RegisterGlobal<T extends II18nTexts> extends PureComponent<IProps> {
     constructor(props: IProps) {
         super(props);
-        translateI18n = this.translateI18n;
+        translateI18n = this.translateI18n as TTranslateI18n<T>;
     }
 
-    translateI18n: TTranslateI18n = (id, options) => {
+    translateI18n = <K extends keyof T>(id: K, options?: { def?: string; args?: Record<string, any> }) => {
         const {formatMessage} = this.props.intl;
-        return formatMessage({id, defaultMessage: options?.def}, options?.args);
+        return formatMessage({id: id as string, defaultMessage: options?.def}, options?.args);
     };
 
     render() {
