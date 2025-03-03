@@ -2,23 +2,25 @@ import React, {Fragment, ReactNode} from 'react';
 import {IntlProvider} from 'react-intl';
 import TranslationWrapper from './TranslationWrapper';
 import RegisterGlobal from '../RegisterGlobal';
+import {isEmpty} from '../utils';
 import {LocaleContextProvider} from './context';
 import {
     TLocale,
-    TLocaleDictionaries,
+    TLocaleDictionariesAsync,
     TOnchangeLocale,
     TRenderLoading
 } from '../types';
-import useMessages from './useMessages';
+import useMessagesAsync from './useMessagesAsync';
 
 
 interface IProps{
-    localeDictionaries: TLocaleDictionaries
+    localeDictionaries: TLocaleDictionariesAsync
     children: ReactNode
     isReMountWithChangeLocale?: boolean,
     locale: TLocale,
     onChangeLocale: TOnchangeLocale,
     defaultLocale: TLocale,
+    renderLoading?: TRenderLoading
 }
 
 
@@ -37,17 +39,31 @@ const OriginLocaleProvider = ({
     locale,
     onChangeLocale,
     defaultLocale,
+    renderLoading,
     children
 }: IProps) => {
-    const {messages, setMessages} = useMessages({locale, defaultLocale, localeDictionaries});
+    const {messages, setMessages} = useMessagesAsync({locale, defaultLocale, localeDictionaries});
 
     /**
      * 當語系異動時
      * @param newLocale
      */
     const onHandleChangeLocale = (newLocale: string) => {
-        setMessages(newLocale);
-        onChangeLocale(newLocale);
+        setMessages(newLocale)
+            .then(() => {
+                onChangeLocale(newLocale);
+            });
+    };
+
+    /**
+     * 渲染內容
+     */
+    const renderChildren = () => {
+        if(isEmpty(messages)){
+            return renderLoading ? renderLoading(): <div>loading...</div>;
+        }
+
+        return children;
     };
 
     return <LocaleContextProvider value={{locale, setLocale: onHandleChangeLocale}}>
@@ -60,7 +76,7 @@ const OriginLocaleProvider = ({
         >
             <Fragment>
                 <RegisterGlobal/>
-                {children}
+                {renderChildren()}
             </Fragment>
         </IntlProvider>
     </LocaleContextProvider>;
