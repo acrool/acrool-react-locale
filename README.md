@@ -142,16 +142,16 @@ const App = () => {
 
 in src/config/locale.ts
 
-
 ```tsx
-import {TLocaleDictionaries} from '@acrool/react-locale';
+import {TLocaleDictionariesAsync} from '@acrool/react-locale';
+
 export enum ELocales {
     enUS = 'en-US',
     zhTW = 'zh-TW',
     jaJP = 'ja-JP',
 }
 
-export const localeDictionaries: TLocaleDictionaries = {
+export const localeDictionaries: TLocaleDictionariesAsync = {
     [ELocales.enUS]: () => import('@/locales/en-US'),
     [ELocales.zhTW]: () => import('@/locales/zh-TW'),
     [ELocales.jaJP]: () => import('@/locales/ja-JP'),
