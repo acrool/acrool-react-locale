@@ -39,6 +39,9 @@ create src/config/locale.ts
 
 ```tsx
 import {TLocaleDictionaries} from '@acrool/react-locale';
+import {enUS} from '@/locales/en-US';
+import {zhTW} from '@/locales/zh-TW';
+import {jaJP} from '@/locales/ja-JP';
 
 export enum ELocales {
     enUS = 'en-US',
@@ -47,9 +50,9 @@ export enum ELocales {
 }
 
 export const localeDictionaries: TLocaleDictionaries = {
-    [ELocales.enUS]: require('locales/en-US').default,
-    [ELocales.zhTW]: require('locales/zh-TW').default,
-    [ELocales.jaJP]: require('locales/ja-JP').default,
+    [ELocales.enUS]: enUS,
+    [ELocales.zhTW]: zhTW,
+    [ELocales.jaJP]: jaJP,
 };
 ```
 
@@ -76,11 +79,11 @@ export default {
 ```
 
 
-in your src/app.tsx add  (is not global state)
+create src/library/acrool-react-locale/index.tsx
 
 ```tsx
 import {BlockWrapper} from '@acrool/react-block';
-import {LocaleAsyncProvider} from '@acrool/react-locale';
+import {LocaleProvider} from '@acrool/react-locale';
 import dayjs from 'dayjs';
 import React from 'react';
 import styled from 'styled-components';
@@ -94,7 +97,7 @@ interface IProps {
 
 
 /**
- * 多語系提供者
+ * Custom Locale Provider
  * @param children
  */
 const ReactLocaleProvider = ({
@@ -104,7 +107,7 @@ const ReactLocaleProvider = ({
         dayjs.locale(newLocale);
     };
 
-    return <LocaleAsyncProvider
+    return <LocaleProvider
         localeDictionaries={serverDictionaries}
         defaultLocale={DEFAULT_LOCALE}
         onChangeLocale={handleChangeLocale}
@@ -112,7 +115,7 @@ const ReactLocaleProvider = ({
         persistKey={`${persistKey}-locale`}
     >
         {children}
-    </LocaleAsyncProvider>;
+    </LocaleProvider>;
 };
 
 export default ReactLocaleProvider;
@@ -132,6 +135,50 @@ const App = () => {
         </Provider>
     );
 };
+```
+
+
+### If you need async load dictionaries
+
+in src/config/locale.ts
+
+
+```tsx
+import {TLocaleDictionaries} from '@acrool/react-locale';
+export enum ELocales {
+    enUS = 'en-US',
+    zhTW = 'zh-TW',
+    jaJP = 'ja-JP',
+}
+
+export const localeDictionaries: TLocaleDictionaries = {
+    [ELocales.enUS]: () => import('@/locales/en-US'),
+    [ELocales.zhTW]: () => import('@/locales/zh-TW'),
+    [ELocales.jaJP]: () => import('@/locales/ja-JP'),
+};
+```
+
+in src/library/acrool-react-locale/index.tsx
+
+```tsx
+import {LocaleAsyncProvider} from '@acrool/react-locale';
+// ...ignore same
+
+const ReactLocaleProvider = ({
+     children
+ }: IProps) => {
+    const handleChangeLocale = (newLocale: string) => {
+        dayjs.locale(newLocale);
+    };
+
+    return <LocaleAsyncProvider
+        //...ignore same
+    >
+        {children}
+    </LocaleAsyncProvider>;
+};
+
+export default ReactLocaleProvider;
 ```
 
 
