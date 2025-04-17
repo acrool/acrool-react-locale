@@ -1,6 +1,6 @@
 {
   "name": "bear-react-locale",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Internationalize Elegant intl library based for Reactjs",
   "keywords": [
     "react",
@@ -47,11 +47,9 @@
     "release:alpha": "standard-version --prerelease alpha"
   },
   "peerDependencies": {
-    "react-router-dom": "6.3.0"
-  },
-  "dependencies": {
     "react": "^18.x",
-    "react-dom": "^18.x"
+    "react-dom": "^18.x",
+    "react-intl": "5.10.4"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
@@ -60,6 +58,8 @@
     "@types/react-dom": "^18.0.11",
     "@types/react-router-dom": "5.3.3",
     "@vitejs/plugin-react-swc": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "cz-git": "^1.6.1",
     "eslint": "^8.37.0",
     "eslint-config-react-app": "^7.0.1",
