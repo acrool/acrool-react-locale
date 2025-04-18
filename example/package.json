@@ -11,17 +11,16 @@
     "pages:deploy": "NODE_VERSION=18 yarn build && wrangler pages deploy ./dist"
   },
   "resolutions": {
-    "styled-components": "5.3.9"
+    "styled-components": "6.1.17"
   },
   "dependencies": {
-    "@acrool/react-table": "5.1.2",
+    "@acrool/react-table": "5.1.12-alpha.7",
     "@acrool/react-locale": "link:..",
-    "@acrool/react-grid": "5.2.2",
+    "@acrool/react-grid": "6.0.2",
     "@types/dom-to-image": "^2.6.7",
-    "@types/styled-components": "^5.1.26",
-    "styled-components": "5.3.9",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "styled-components": "6.1.17",
+    "react": "link:../node_modules/react",
+    "react-dom": "link:../node_modules/react-dom",
     "dom-to-image": "^2.6.0"
   },
   "devDependencies": {
