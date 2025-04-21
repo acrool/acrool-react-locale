@@ -20,6 +20,10 @@
 
 </div>
 
+
+`^3.2.1 support react >=18.0.0 <20.0.0`
+
+
 ## Features
 
 - Use intl for packaging
