@@ -21,6 +21,7 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "browser": "./dist/acrool-react-locale.es.js",
       "import": "./dist/acrool-react-locale.es.js"
     }
