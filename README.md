@@ -196,7 +196,7 @@ import {useLocale} from '@acrool/react-locale';
 
 const Example = () => {
     const {t} = useLocale();
-    return <div>{t('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'Taiwan'}})}</div>
+    return <div>{t('page.promotion.title', {def: 'promotions', params: {country: 'Taiwan'}})}</div>
 }
 ```
 
@@ -204,7 +204,7 @@ global function (in not function component) `only in provider children component
 
 ```ts
 import {translateI18n} from '@acrool/react-locale';
-translateI18n('page.promotion.title', {defaultMessage: 'promotions', params: {country: 'taiwan'}})
+translateI18n('page.promotion.title', {def: 'promotions', params: {country: 'taiwan'}})
 ```
 
 
