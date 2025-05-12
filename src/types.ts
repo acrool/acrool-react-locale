@@ -17,18 +17,18 @@ export type TLocaleDictionaries = {
 
 
 export type TMessage = {
-    [code: string]: Record<string, string> | Record<string, MessageFormatElement[]>;
+    [code: string]: Record<string, string> | Record<string, MessageFormatElement[]>,
 }
 
 interface IArgs {
-    [key: string]: string|number,
+    [key: string]: string|number
 }
 
 export type TTranslateI18n<T extends Record<string, string>> = <
     K extends keyof T
 >(
     id: K,
-    options?: { def?: string; args?: IArgs }
+    options?: { def?: string, args?: IArgs }
 ) => string;
 
 

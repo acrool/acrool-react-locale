@@ -1,13 +1,14 @@
 import React, {Children, useState} from 'react';
-import OriginLocaleProvider from './OriginLocaleProvider';
+
 import {TLocale, TLocaleDictionaries} from '../types';
+import OriginLocaleProvider from './OriginLocaleProvider';
 
 
 interface IProps{
     localeDictionaries: TLocaleDictionaries
     children: JSX.Element
-    defaultLocale: TLocale,
-    currentLocale: string,
+    defaultLocale: TLocale
+    currentLocale: string
 }
 
 /**

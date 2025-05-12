@@ -2,8 +2,8 @@ import React, {Fragment} from 'react';
 
 interface IProps {
     dangerouslySetInnerHTML: {
-        __html: string;
-    };
+        __html: string,
+    }
 }
 
 const TranslationWrapper = ({

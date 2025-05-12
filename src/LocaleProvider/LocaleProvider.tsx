@@ -1,6 +1,7 @@
 import React, {ReactNode, useEffect, useState} from 'react';
+
+import {TLocale, TLocaleDictionaries, TOnchangeLocale, TRenderLoading} from '../types';
 import OriginLocaleProvider from './OriginLocaleProvider';
-import {TLocaleDictionaries, TLocale, TOnchangeLocale, TRenderLoading} from '../types';
 
 
 interface IProps{

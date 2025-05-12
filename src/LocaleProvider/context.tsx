@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {TLocale} from '../types';
 
 
@@ -6,7 +7,7 @@ import {TLocale} from '../types';
  |               Interface                   |
  /** ---------------------------------------*/
 export interface IState {
-    locale: TLocale,
+    locale: TLocale
     setLocale: (locale: TLocale) => void
 }
 

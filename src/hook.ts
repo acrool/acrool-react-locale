@@ -1,5 +1,6 @@
 import {useCallback, useContext} from 'react';
 import {useIntl} from 'react-intl';
+
 import {LocaleContext} from './LocaleProvider/context';
 import {II18nTexts} from './types';
 
@@ -17,7 +18,7 @@ export const useLocale = <T extends II18nTexts>() => {
      */
     const t = useCallback(<K extends keyof T>(
         id: K,
-        options?: { def?: string; args?: Record<string, any> }
+        options?: { def?: string, args?: Record<string, any> }
     ) => {
         return formatMessage({id: id as string, defaultMessage: options?.def}, options?.args);
     }, [locale]);
