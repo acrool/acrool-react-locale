@@ -1,24 +1,25 @@
 import React, {Fragment, ReactNode} from 'react';
 import {IntlProvider} from 'react-intl';
-import TranslationWrapper from './TranslationWrapper';
+
 import RegisterGlobal from '../RegisterGlobal';
-import {LocaleContextProvider} from './context';
 import {
     TLocale,
     TLocaleDictionaries,
     TOnchangeLocale,
     TRenderLoading
 } from '../types';
+import {LocaleContextProvider} from './context';
+import TranslationWrapper from './TranslationWrapper';
 import useMessages from './useMessages';
 
 
 interface IProps{
     localeDictionaries: TLocaleDictionaries
     children: ReactNode
-    isReMountWithChangeLocale?: boolean,
-    locale: TLocale,
-    onChangeLocale: TOnchangeLocale,
-    defaultLocale: TLocale,
+    isReMountWithChangeLocale?: boolean
+    locale: TLocale
+    onChangeLocale: TOnchangeLocale
+    defaultLocale: TLocale
 }
 
 

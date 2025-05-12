@@ -1,4 +1,4 @@
-import {II18nTexts, TLocaleDictionaries, TMessage, TLocale, TLocaleDictionariesAsync} from './types';
+import {II18nTexts, TLocale, TLocaleDictionaries, TLocaleDictionariesAsync,TMessage} from './types';
 
 
 export type Empty = null | undefined | false | '' | 0;
