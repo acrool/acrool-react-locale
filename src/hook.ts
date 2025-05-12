@@ -25,7 +25,6 @@ export const useLocale = <T extends II18nTexts>() => {
 
     return {
         t,
-        i18n: t,
         locale,
         setLocale,
     };
