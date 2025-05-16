@@ -332,6 +332,11 @@ There is also a example that you can play with it:
 
 [Acrool React Utils With Webstorm](https://plugins.jetbrains.com/plugin/27268-acrool-react-utils)
 
+<img src="https://raw.githubusercontent.com/acrool/acrool-react-locale/main/example/public/ide-helper/1.png" alt="Webstorm Panel"/>
+<img src="https://raw.githubusercontent.com/acrool/acrool-react-locale/main/example/public/ide-helper/2.png" alt="Convert t()"/>
+<img src="https://raw.githubusercontent.com/acrool/acrool-react-locale/main/example/public/ide-helper/3.png" alt="Create to locales"/>
+
+
 ## License
 
 MIT © [Acrool](https://github.com/acrool) & [Imagine](https://github.com/imagine10255)
