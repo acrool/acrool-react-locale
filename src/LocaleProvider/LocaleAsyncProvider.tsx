@@ -26,7 +26,7 @@ interface IProps{
 const LocaleAsyncProvider = ({
     localeDictionaries,
     defaultLocale,
-    persistKey = 'persist:acrool-example_locale',
+    persistKey = 'persist:acrool-locale',
     children,
     onChangeLocale,
     renderLoading,

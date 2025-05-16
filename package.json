@@ -1,6 +1,6 @@
 {
   "name": "@acrool/react-locale",
-  "version": "3.2.4",
+  "version": "4.0.0-alpha.0",
   "description": "Internationalize Elegant intl library based for Reactjs",
   "keywords": [
     "react",
@@ -52,7 +52,7 @@
     "react-dom": ">=18.0.0 <20.0.0"
   },
   "dependencies": {
-    "react-intl": "5.10.4"
+    "react-intl": "7.1.11"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-ts": "^4.2.0",
@@ -70,6 +70,7 @@
     "@vitejs/plugin-react-swc": "^3.0.0",
     "cz-conventional-changelog": "3.3.0",
     "cz-customizable": "6.6.0",
+    "cz-git": "^1.11.1",
     "eslint": "^9.19.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-simple-import-sort": "^10.0.0",

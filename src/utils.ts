@@ -65,7 +65,7 @@ export const formatTranslationMessagesAsync = async (locale: TLocale, defaultLoc
  * @param defaultLocale
  * @param localeDictionaries
  */
-export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionaries): II18nTexts => {
+export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionaries): Record<string, string> => {
 
     // Get Default Setting
     let messages = localeDictionaries[locale];
@@ -78,11 +78,12 @@ export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocal
         }
     }
 
-    const flattenFormattedMessages = (formattedMessages: TMessage, key: string): TMessage => {
-        return Object.assign(formattedMessages, {[key]: messages[key]});
-    };
-
-    return Object.keys(messages).reduce((formattedMessages, key) => {
-        return flattenFormattedMessages(formattedMessages, key);
-    }, {});
+    // 扁平化
+    const flat: Record<string, string> = {};
+    Object.values(messages).forEach(group => {
+        Object.entries(group).forEach(([k, v]) => {
+            flat[k] = v;
+        });
+    });
+    return flat;
 };

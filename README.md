@@ -26,9 +26,9 @@
 
 ## Features
 
-- Use intl for packaging
+- Use `react-intl v7` for packaging
 - Support Hooks
-- Support Nextjs 14+
+- Support `Nextjs 14+`
 
 
 ## Install
@@ -64,10 +64,20 @@ create src/locales/en-US.ts
 
 ```ts
 export default {
-    'page.home.title': 'Home',
-    'page.home.desc': `This is a carousel developed directly using React + Flexbox (non-js secondary development package into React),<br/>
+    'page': {
+        'page.home.field.title': 'Title',
+        'page.home.field.name': 'Name',
+        'page.home.field.inComponent': 'in component',
+        'page.home.field.notInComponent': 'not in component',
+        'page.home.title': 'Home',
+        'page.home.desc': `This is a carousel developed directly using React + Flexbox (non-js secondary development package into React),
     and only include the features you need, not too many cool effects that might complicate your usage or create other weird issues.`,
-    'page.home.feature.title': 'Feature',
+        'page.home.feature.title': 'Feature',
+    },
+    'common': {
+        'common.button.ok': 'OK',
+        'common.button.cancel': 'Cancel',
+    },
 };
 ```
 
@@ -75,10 +85,22 @@ create src/locales/zh-TW.ts
 
 ```ts
 export default {
-    'page.home.title': '關於',
-    'page.home.desc': `Bear Carousel 是一個直接使用React + Flexbox開發的輪播套件 (非js二次開發包成React)，<br/>
+    'page':{
+        'page.home.field.title': '標題',
+        'page.home.field.name': '名稱',
+        'page.home.field.inComponent': '在元件內',
+        'page.home.field.notInComponent': '不在元件內',
+
+        'page.home.title': '關於',
+        'page.home.desc': `Bear Carousel 是一個直接使用React + Flexbox開發的輪播套件 (非js二次開發包成React)，
      並且只包含你需要的功能，沒有太多很酷的效果，因為那些可能會讓你變得不容易使用並且產生其他奇怪的問題`,
-    'page.home.feature.title': '特性',
+        'page.home.feature.title': '特性',
+    },
+    'common':{
+        'common.button.ok': '確定',
+        'common.button.cancel': '取消',
+    }
+    
 };
 ```
 
@@ -305,6 +327,10 @@ There is also a example that you can play with it:
 
 [![Play react-editext-example](https://raw.githubusercontent.com/acrool/acrool-react-locale/main/play-in-example-button.svg)](https://acrool-react-locale.pages.dev)
 
+
+## IDE Tools
+
+[Acrool React Utils With Webstorm](https://plugins.jetbrains.com/plugin/27268-acrool-react-utils)
 
 ## License
 

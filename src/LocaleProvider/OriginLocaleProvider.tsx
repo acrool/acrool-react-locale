@@ -1,12 +1,10 @@
 import React, {Fragment, ReactNode} from 'react';
 import {IntlProvider} from 'react-intl';
 
-import RegisterGlobal from '../RegisterGlobal';
 import {
     TLocale,
     TLocaleDictionaries,
     TOnchangeLocale,
-    TRenderLoading
 } from '../types';
 import {LocaleContextProvider} from './context';
 import TranslationWrapper from './TranslationWrapper';
@@ -42,6 +40,7 @@ const OriginLocaleProvider = ({
 }: IProps) => {
     const {messages, setMessages} = useMessages({locale, defaultLocale, localeDictionaries});
 
+
     /**
      * 當語系異動時
      * @param newLocale
@@ -60,7 +59,6 @@ const OriginLocaleProvider = ({
             textComponent={TranslationWrapper as React.ComponentType}
         >
             <Fragment>
-                <RegisterGlobal/>
                 {children}
             </Fragment>
         </IntlProvider>

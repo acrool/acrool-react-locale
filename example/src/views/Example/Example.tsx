@@ -1,13 +1,11 @@
-import {translateI18n, useLocale} from '@acrool/react-locale';
-import {ELocales} from '../../config/locale';
+import {useLocale} from '@acrool/react-locale';
 import Table from '@acrool/react-table';
+
+import {ELocales} from '../../config/locale';
 import enUS from '../../locales/en-US';
 
 
 
-export const getTextNotComponent = () => {
-    return translateI18n('page.home.desc');
-};
 
 const Example = () => {
     const {t, setLocale, locale} = useLocale<typeof enUS>();
@@ -45,13 +43,6 @@ const Example = () => {
                                 {t('page.home.desc')}
                             </div>
                         </div>,
-                    }
-                },
-                {
-                    id: 2,
-                    field: {
-                        title: t('page.home.field.notInComponent', {def: 'not in component'}),
-                        name: <div className="text-area-overflow text-area-overflow-2">{getTextNotComponent()}</div>,
                     }
                 },
             ]}

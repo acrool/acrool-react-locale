@@ -1,7 +1,6 @@
 import React, {Fragment, ReactNode} from 'react';
 import {IntlProvider} from 'react-intl';
 
-import RegisterGlobal from '../RegisterGlobal';
 import {
     TLocale,
     TLocaleDictionariesAsync,
@@ -76,7 +75,6 @@ const OriginLocaleProvider = ({
             textComponent={TranslationWrapper as React.ComponentType}
         >
             <Fragment>
-                <RegisterGlobal/>
                 {renderChildren()}
             </Fragment>
         </IntlProvider>

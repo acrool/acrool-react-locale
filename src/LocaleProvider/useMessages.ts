@@ -14,7 +14,7 @@ const useMessages = ({
     defaultLocale,
     localeDictionaries,
 }: IProps) => {
-    const [messages, setMessages] = useState<II18nTexts|undefined>(
+    const [messages, setMessages] = useState<Record<string, string>>(
         formatTranslationMessages(locale, defaultLocale, localeDictionaries),
     );
 
@@ -31,7 +31,6 @@ const useMessages = ({
         const newMessage = formatTranslationMessages(newLocale, defaultLocale, localeDictionaries);
         setMessages(newMessage);
     };
-    
     
     return {
         messages,

@@ -1,11 +1,13 @@
-import {MessageFormatElement} from 'intl-messageformat-parser';
+import {MessageFormatElement} from '@formatjs/icu-messageformat-parser';
 import {ReactNode} from 'react';
 
 export type TLocale = string
 
 
 export interface II18nTexts {
-    [i18nKey: string]: string
+    [i18nGroup: string]: {
+        [i18nKey: string]: string,
+    }
 }
 
 export type TLocaleDictionariesAsync = {
