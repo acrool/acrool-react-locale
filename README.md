@@ -328,7 +328,7 @@ There is also a example that you can play with it:
 [![Play react-editext-example](https://raw.githubusercontent.com/acrool/acrool-react-locale/main/play-in-example-button.svg)](https://acrool-react-locale.pages.dev)
 
 
-## IDE Tools
+## IDE Webstorm Tools 
 
 [Acrool React Utils With Webstorm](https://plugins.jetbrains.com/plugin/27268-acrool-react-utils)
 
