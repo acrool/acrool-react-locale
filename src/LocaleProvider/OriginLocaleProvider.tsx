@@ -66,8 +66,6 @@ const OriginLocaleProvider = ({
      * @param err
      */
     const handleOnError = (err: Error) => {
-        console.log('ignoreMissingLocaleMessage', ignoreMissingLocaleMessage);
-        
         if(ignoreMissingLocaleMessage && err.message.includes('MISSING_TRANSLATION')){
             return;
         }
