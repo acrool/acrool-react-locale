@@ -4,17 +4,18 @@ import {ReactNode} from 'react';
 export type TLocale = string
 
 
+export interface II18nGroupTexts {
+    [i18nGroup: string]: II18nTexts
+}
 export interface II18nTexts {
-    [i18nGroup: string]: {
-        [i18nKey: string]: string,
-    }
+    [i18nKey: string]: string
 }
 
 export type TLocaleDictionariesAsync = {
-    [localeCode in TLocale]: II18nTexts | (() => Promise<{ default: II18nTexts }>)
+    [localeCode in TLocale]: II18nGroupTexts | (() => Promise<{ default: II18nGroupTexts }>)
 }
 export type TLocaleDictionaries = {
-    [localeCode in TLocale]: II18nTexts
+    [localeCode in TLocale]: II18nGroupTexts
 }
 
 

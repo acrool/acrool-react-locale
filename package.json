@@ -52,11 +52,12 @@
     "react-dom": ">=18.0.0 <20.0.0"
   },
   "dependencies": {
-    "react-intl": "7.1.11"
+    "react-intl": "7.1.11",
+    "@acrool/js-logger": "1.0.26"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin-ts": "^4.2.0",
-    "@swc/jest": "^0.2.27",
+    "@swc/jest": "^0.2.38",
     "@testing-library/dom": "10.3.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "16.0.0",

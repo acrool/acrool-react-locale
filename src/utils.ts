@@ -1,3 +1,5 @@
+import logger from '@acrool/js-logger';
+
 import {II18nTexts, TLocale, TLocaleDictionaries, TLocaleDictionariesAsync,TMessage} from './types';
 
 
@@ -40,22 +42,24 @@ export const formatTranslationMessagesAsync = async (locale: TLocale, defaultLoc
     // Get Default Setting
     let messages = localeDictionaries[locale];
     if(typeof messages === 'undefined') {
-        console.log(`[@acrool/react-locale] localeDictionaries not have key \`${locale}\` in locale!, use default \`${defaultLocale}\``);
+        logger.warning('@acrool/react-locale', `localeDictionaries not have key \`${locale}\` in locale!, use default \`${defaultLocale}\``);
         messages = localeDictionaries[defaultLocale];
         if (typeof messages === 'undefined') {
-            console.warn(`[@acrool/react-locale] localeDictionaries not have key \`${defaultLocale}\` in locale!, please check`);
+            logger.warning('@acrool/react-locale', `localeDictionaries not have key \`${defaultLocale}\` in locale!, please check`);
             return {};
         }
     }
     
     const fetchMessage = typeof messages === 'function' ? (await messages()).default: messages;
-    const flattenFormattedMessages = (formattedMessages: TMessage, key: string): TMessage => {
-        return Object.assign(formattedMessages, {[key]: fetchMessage[key]});
-    };
-    
-    return Object.keys(fetchMessage).reduce((formattedMessages, key) => {
-        return flattenFormattedMessages(formattedMessages, key);
-    }, {});
+
+    // Flatten messages
+    const flat: II18nTexts = {};
+    Object.values(fetchMessage).forEach(group => {
+        Object.entries(group).forEach(([k, v]) => {
+            flat[k] = v;
+        });
+    });
+    return flat;
 };
 
 
@@ -65,21 +69,21 @@ export const formatTranslationMessagesAsync = async (locale: TLocale, defaultLoc
  * @param defaultLocale
  * @param localeDictionaries
  */
-export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionaries): Record<string, string> => {
+export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionaries): II18nTexts => {
 
     // Get Default Setting
     let messages = localeDictionaries[locale];
     if(typeof messages === 'undefined') {
-        console.log(`[@acrool/react-locale] localeDictionaries not have key \`${locale}\` in locale!, use default \`${defaultLocale}\``);
+        logger.warning('@acrool/react-locale', `localeDictionaries not have key \`${locale}\` in locale!, use default \`${defaultLocale}\``);
         messages = localeDictionaries[defaultLocale];
         if (typeof messages === 'undefined') {
-            console.warn(`[@acrool/react-locale] localeDictionaries not have key \`${defaultLocale}\` in locale!, please check`);
+            logger.warning('@acrool/react-locale', `localeDictionaries not have key \`${defaultLocale}\` in locale!, please check`);
             return {};
         }
     }
 
     // 扁平化
-    const flat: Record<string, string> = {};
+    const flat: II18nTexts = {};
     Object.values(messages).forEach(group => {
         Object.entries(group).forEach(([k, v]) => {
             flat[k] = v;

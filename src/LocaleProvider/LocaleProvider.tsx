@@ -10,6 +10,7 @@ interface IProps{
     defaultLocale: TLocale
     persistKey?: string
     onChangeLocale?: TOnchangeLocale
+    ignoreMissingLocaleMessage?: boolean
     renderLoading?: TRenderLoading
 }
 
@@ -28,6 +29,7 @@ const LocaleProvider = ({
     defaultLocale,
     persistKey = 'persist:acrool-locale',
     children,
+    ignoreMissingLocaleMessage,
     onChangeLocale,
 }: IProps) => {
     const initLocale = (window.localStorage.getItem(persistKey) || defaultLocale) as TLocale;
@@ -47,6 +49,7 @@ const LocaleProvider = ({
         onChangeLocale={setLocale}
         defaultLocale={defaultLocale}
         localeDictionaries={localeDictionaries}
+        ignoreMissingLocaleMessage={ignoreMissingLocaleMessage}
     >
         {children}
     </OriginLocaleProvider>;

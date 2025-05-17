@@ -139,6 +139,7 @@ const ReactLocaleProvider = ({
         onChangeLocale={handleChangeLocale}
         renderLoading={() => <Loader/>}
         persistKey={`${persistKey}-locale`}
+        ignoreMissingLocaleMessage={false}
     >
         {children}
     </LocaleProvider>;
@@ -262,6 +263,7 @@ const ReactLocaleProvider = ({
         defaultLocale={DEFAULT_LOCALE}
         locale={locale}
         setLocale={(locale: string ) => handleChangeLocale(locale as ELocales)}
+        ignoreMissingLocaleMessage={false}
     >
         {Children.only(children)}
     </OriginLocaleProvider>;
@@ -290,6 +292,7 @@ const withI18next = (StoryFn: PartialStoryFn<Renderer>) => {
             localeDictionaries={localeDictionaries}
             defaultLocale={DEFAULT_LOCALE}
             persistKey={`${persistKey}-locale`}
+            ignoreMissingLocaleMessage={false}
         >
             <StoryFn/>
         </LocaleProvider>
@@ -312,10 +315,7 @@ const preview: Preview = {
         withI18next,
         (Story) => (
             <GridThemeProvider>
-                <>
-                    <Story/>
-                    {SvgSymbol}
-                </>
+                <Story/>
             </GridThemeProvider>
         ),
     ],

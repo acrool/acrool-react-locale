@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@acrool/js-logger@1.0.26":
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/@acrool/js-logger/-/js-logger-1.0.26.tgz#fd033cb2581c776c8f6310adec5f1430ec28d7c7"
+  integrity sha512-JnjCgzrZEcfePt0XxkFGN0TqxbFETpWm92lPhn5gK1jaVSFdwbxKPeY+fLPFmG70ECw/s5t0vOW/ByCgpUvAiw==
+
 "@adobe/css-tools@^4.4.0":
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.4.2.tgz#c836b1bd81e6d62cd6cdf3ee4948bcdce8ea79c8"
@@ -1430,7 +1435,7 @@
   resolved "https://registry.yarnpkg.com/@swc/counter/-/counter-0.1.3.tgz#cc7463bd02949611c6329596fccd2b0ec782b0e9"
   integrity sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==
 
-"@swc/jest@^0.2.27":
+"@swc/jest@^0.2.38":
   version "0.2.38"
   resolved "https://registry.yarnpkg.com/@swc/jest/-/jest-0.2.38.tgz#8b137e344c6c021d4e49ee2bc62b0e5e564d2c7c"
   integrity sha512-HMoZgXWMqChJwffdDjvplH53g9G2ALQes3HKXDEdliB/b85OQ0CTSbxG8VSeCwiAn7cOaDVEt4mwmZvbHcS52w==

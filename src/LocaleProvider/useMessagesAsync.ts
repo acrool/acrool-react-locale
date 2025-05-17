@@ -9,7 +9,7 @@ interface IProps {
     localeDictionaries: TLocaleDictionariesAsync
 }
 
-const useMessages = ({
+const useMessagesAsync = ({
     locale,
     defaultLocale,
     localeDictionaries,
@@ -47,7 +47,7 @@ const useMessages = ({
     };
 };
 
-export default useMessages;
+export default useMessagesAsync;
 
 
 

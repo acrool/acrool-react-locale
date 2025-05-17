@@ -1,7 +1,7 @@
 export default {
     coverageDirectory: 'coverage',
-    preset: 'ts-jest',
     testEnvironment: 'jsdom',
+    preset: 'ts-jest',
     testMatch: ['<rootDir>/**/*.(spec|test).ts?(x)'],
     transform: {
         '^.+\\.(t|j)sx?$': [
@@ -17,6 +17,9 @@ export default {
             },
         ],
     },
+    transformIgnorePatterns: [
+        '/node_modules/(?!@acrool/js-logger)', // 這裡加上
+    ],
     moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/src/$1',
         '\\.(css|scss)$': 'identity-obj-proxy',

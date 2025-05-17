@@ -8,7 +8,7 @@ import enUS from '../../locales/en-US';
 
 
 const Example = () => {
-    const {t, setLocale, locale} = useLocale<typeof enUS>();
+    const {t, setLocale, locale} = useLocale();
 
     return <div>
 
@@ -31,7 +31,7 @@ const Example = () => {
             bodyLineHeight="60px"
             title={{
                 title: {text: t('page.home.field.title', {def: 'Title'}), col: 150},
-                name: {text: t('page.home.field.name', {def: 'Name'}), col: 'auto'}
+                name: {text: t('page.home.field.name22', {def: 'Name'}), col: 'auto'}
             }}
             data={[
                 {

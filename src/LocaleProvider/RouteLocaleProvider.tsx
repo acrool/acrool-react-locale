@@ -8,6 +8,7 @@ interface IProps{
     localeDictionaries: TLocaleDictionaries
     children: JSX.Element
     defaultLocale: TLocale
+    ignoreMissingLocaleMessage?: boolean
     currentLocale: string
 }
 
@@ -17,12 +18,14 @@ interface IProps{
  * @param localeDictionaries
  * @param currentLocale
  * @param defaultLocale
+ * @param ignoreMissingLocaleMessage
  * @param children
  */
 const RouteLocaleProvider = ({
     localeDictionaries,
     currentLocale,
     defaultLocale,
+    ignoreMissingLocaleMessage,
     children
 }: IProps) => {
     const initLocale = (currentLocale || defaultLocale) as TLocale;
@@ -33,6 +36,7 @@ const RouteLocaleProvider = ({
         onChangeLocale={setLocale}
         defaultLocale={defaultLocale}
         localeDictionaries={localeDictionaries}
+        ignoreMissingLocaleMessage={ignoreMissingLocaleMessage}
     >
         {children}
     </OriginLocaleProvider>;

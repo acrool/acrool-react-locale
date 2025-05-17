@@ -1,3 +1,4 @@
+import logger from '@acrool/js-logger';
 import React, {Fragment, ReactNode} from 'react';
 import {IntlProvider} from 'react-intl';
 
@@ -17,6 +18,7 @@ interface IProps{
     localeDictionaries: TLocaleDictionariesAsync
     children: ReactNode
     isReMountWithChangeLocale?: boolean
+    ignoreMissingLocaleMessage?: boolean
     locale: TLocale
     onChangeLocale: TOnchangeLocale
     defaultLocale: TLocale
@@ -36,6 +38,7 @@ interface IProps{
 const OriginLocaleProvider = ({
     localeDictionaries,
     isReMountWithChangeLocale = false,
+    ignoreMissingLocaleMessage = false,
     locale,
     onChangeLocale,
     defaultLocale,
@@ -66,12 +69,34 @@ const OriginLocaleProvider = ({
         return children;
     };
 
+
+    /**
+     * 處理警告訊息
+     * @param message
+     */
+    const handleOnWarning = (message: string) => {
+        logger.danger('@acrool/react-locale', message.replace('@formatjs/intl',''));
+    };
+
+    /**
+     * 處理錯誤訊息
+     * @param err
+     */
+    const handleOnError = (err: Error) => {
+        if(ignoreMissingLocaleMessage && err.message.includes('MISSING_TRANSLATION')){
+            return;
+        }
+        logger.danger('@acrool/react-locale', err.message.replace('@formatjs/intl Error ',''));
+    };
+
     return <LocaleContextProvider value={{locale, setLocale: onHandleChangeLocale}}>
         <IntlProvider
             key={isReMountWithChangeLocale ? locale: undefined} // Using Key will cause the language to be changed and remounted.
             locale={locale}
             defaultLocale={defaultLocale}
             messages={messages}
+            onWarn={logger.warning}
+            onError={handleOnError}
             textComponent={TranslationWrapper as React.ComponentType}
         >
             <Fragment>
