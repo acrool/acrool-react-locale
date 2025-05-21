@@ -169,6 +169,16 @@ const App = () => {
 
 in src/config/locale.ts
 
+`${languageCode}-${countryCode}`
+
+languageCode is a two-letter lowercase code as defined by ISO-639.
+https://zh.wikipedia.org/zh-tw/ISO_639-1
+
+countryCode is a two-letter uppercase code as defined by ISO-3166.
+https://zh.wikipedia.org/zh-tw/ISO_3166-1
+
+For example, en-US is the language value for United States English.
+
 ```tsx
 import {TLocaleDictionariesAsync} from '@acrool/react-locale';
 
