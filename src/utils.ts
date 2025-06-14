@@ -1,6 +1,6 @@
 import logger from '@acrool/js-logger';
 
-import {II18nTexts, TLocale, TLocaleDictionaries, TLocaleDictionariesAsync,TMessage} from './types';
+import {TI18nTexts, TLocale, TLocaleDictionaries, TLocaleDictionariesAsync, TMessage} from './types';
 
 
 export type Empty = null | undefined | false | '' | 0;
@@ -37,7 +37,7 @@ export function isEmpty<T>(value: T, checkOption?: {
  * @param defaultLocale
  * @param localeDictionaries
  */
-export const formatTranslationMessagesAsync = async (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionariesAsync): Promise<II18nTexts> => {
+export const formatTranslationMessagesAsync = async (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionariesAsync): Promise<TI18nTexts> => {
 
     // Get Default Setting
     let messages = localeDictionaries[locale];
@@ -53,7 +53,7 @@ export const formatTranslationMessagesAsync = async (locale: TLocale, defaultLoc
     const fetchMessage = typeof messages === 'function' ? (await messages()).default: messages;
 
     // Flatten messages
-    const flat: II18nTexts = {};
+    const flat: TI18nTexts = {};
     Object.values(fetchMessage).forEach(group => {
         Object.entries(group).forEach(([k, v]) => {
             flat[k] = v;
@@ -69,7 +69,7 @@ export const formatTranslationMessagesAsync = async (locale: TLocale, defaultLoc
  * @param defaultLocale
  * @param localeDictionaries
  */
-export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionaries): II18nTexts => {
+export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionaries): TI18nTexts => {
 
     // Get Default Setting
     let messages = localeDictionaries[locale];
@@ -83,7 +83,7 @@ export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocal
     }
 
     // 扁平化
-    const flat: II18nTexts = {};
+    const flat: TI18nTexts = {};
     Object.values(messages).forEach(group => {
         Object.entries(group).forEach(([k, v]) => {
             flat[k] = v;

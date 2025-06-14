@@ -2,13 +2,13 @@ import {useCallback, useContext} from 'react';
 import {useIntl} from 'react-intl';
 
 import {LocaleContext} from './LocaleProvider/context';
-import {II18nTexts} from './types';
+import {TTranslationKey} from './types';
 
 
 /**
  * 翻譯 Hook
  */
-export const useLocale = <T extends II18nTexts>() => {
+export const useLocale = <T extends Record<string, Record<string, string>>>() => {
     const {locale, setLocale} = useContext(LocaleContext);
     const {formatMessage} = useIntl();
 
@@ -16,8 +16,8 @@ export const useLocale = <T extends II18nTexts>() => {
     /**
      * 包含default方法
      */
-    const t = useCallback(<K extends keyof T>(
-        id: K,
+    const t = useCallback((
+        id: TTranslationKey<T>,
         options?: { def?: string, args?: Record<string, any> }
     ) => {
         return formatMessage({id: id as string, defaultMessage: options?.def}, options?.args);
