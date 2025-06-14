@@ -27,8 +27,7 @@ const translations: TDefaultTranslations = {
         'formatError.pattern': '形式が正しくありません',
         'formatError.required': '必須項目です'
     }
-
-};
+} as const;
 
 
 export default translations;

@@ -111,10 +111,12 @@ const translations: TDefaultTranslations = {
         'formatError.pattern': '格式錯誤',
         'formatError.required': '必填欄位'
     }
-};
+} as const;
 
 export default translations;
 ```
+
+> as const only other language
 
 
 create src/library/react-locale/index.tsx
