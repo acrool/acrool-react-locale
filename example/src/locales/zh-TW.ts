@@ -1,7 +1,6 @@
-import {TKeyTranslations} from './en-US';
+import {TDefaultTranslations} from './en-US';
 
-const translations: TKeyTranslations = {
-
+const translations: TDefaultTranslations = {
     page:{
         'page.home.field.title': '標題',
         'page.home.field.name': '名稱',

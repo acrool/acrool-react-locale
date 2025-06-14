@@ -1,13 +1,6 @@
-type CommonKeys =
-    'common' |
-    'page' |
-    'formatError'
-;
-
 /*-------------------------
 *      Default Locales
 ---------------------------*/
-
 const translations = {
     page: {
         'page.home.field.title': 'Title',
@@ -36,22 +29,10 @@ const translations = {
     }
 };
 
-
 export default translations;
+export type TDefaultTranslations = typeof translations;
 
-export type TCurrTranslations = typeof translations;
 
-export type TKeyTranslations = {
-    [K in CommonKeys]: {
-        [KEY in keyof TCurrTranslations[K]]: string
-    };
-};
-
-//
-//
-// export type TI18nTexts = {
-//     [K in CommonKeys]: keyof TCurrTranslations[K];
-// }[CommonKeys];
 
 // 測試
 // const text: TI18nTexts = "common.action"; // 正確

@@ -60,52 +60,64 @@ export const localeDictionaries: TLocaleDictionaries = {
 };
 ```
 
-create src/locales/en-US.ts
+create src/locales/en-US.ts (Default Locales)
 
 ```ts
-export default {
-    'page': {
+/*-------------------------
+*      Default Locales
+---------------------------*/
+const translations = {
+    page: {
         'page.home.field.title': 'Title',
-        'page.home.field.name': 'Name',
-        'page.home.field.inComponent': 'in component',
-        'page.home.field.notInComponent': 'not in component',
-        'page.home.title': 'Home',
         'page.home.desc': `This is a carousel developed directly using React + Flexbox (non-js secondary development package into React),
     and only include the features you need, not too many cool effects that might complicate your usage or create other weird issues.`,
         'page.home.feature.title': 'Feature',
     },
-    'common': {
-        'common.button.ok': 'OK',
-        'common.button.cancel': 'Cancel',
-    },
+    formatError:{
+        'formatError.email': 'Email format error',
+        'formatError.max': 'The maximum value is {max}',
+        'formatError.maxFraction': 'The floating-point number can only have a maximum of {maxFraction} digits',
+        'formatError.maxLength': 'Up to {maxLength} characters',
+        'formatError.min': 'The minimum value is {min}',
+        'formatError.minLength': 'At least {minLength} characters',
+        'formatError.pattern': 'Format error',
+        'formatError.required': 'Required Column'
+    }
 };
+
+export default translations;
+export type TDefaultTranslations = typeof translations;
 ```
 
-create src/locales/zh-TW.ts
+create src/locales/zh-TW.ts (Options Locales)
 
 ```ts
-export default {
-    'page':{
-        'page.home.field.title': '標題',
-        'page.home.field.name': '名稱',
-        'page.home.field.inComponent': '在元件內',
-        'page.home.field.notInComponent': '不在元件內',
+import {TDefaultTranslations} from './en-US'; // Import default locales
 
-        'page.home.title': '關於',
+const translations: TDefaultTranslations = {
+    page:{
+        'page.home.field.title': '標題',
         'page.home.desc': `Bear Carousel 是一個直接使用React + Flexbox開發的輪播套件 (非js二次開發包成React)，
      並且只包含你需要的功能，沒有太多很酷的效果，因為那些可能會讓你變得不容易使用並且產生其他奇怪的問題`,
         'page.home.feature.title': '特性',
     },
-    'common':{
-        'common.button.ok': '確定',
-        'common.button.cancel': '取消',
+    formatError: {
+        'formatError.email': '電子郵件格式錯誤',
+        'formatError.max': '最大值為 {max}',
+        'formatError.maxFraction': '浮點數最多僅能為 {maxFraction} 位數',
+        'formatError.maxLength': '最多 {maxLength} 個字元',
+        'formatError.min': '最小值為 {min}',
+        'formatError.minLength': '至少 {minLength} 個字元',
+        'formatError.pattern': '格式錯誤',
+        'formatError.required': '必填欄位'
     }
-    
 };
+
+export default translations;
 ```
 
 
-create src/library/acrool-react-locale/index.tsx
+create src/library/react-locale/index.tsx
 
 ```tsx
 import {BlockWrapper} from '@acrool/react-block';
@@ -195,7 +207,7 @@ export const localeDictionaries: TLocaleDictionariesAsync = {
 };
 ```
 
-in src/library/acrool-react-locale/index.tsx
+in src/library/react-locale/index.tsx
 
 ```tsx
 import {LocaleAsyncProvider} from '@acrool/react-locale';
