@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/acrool/acrool-react-locale/compare/v4.0.0...v4.1.0) (2025-06-14)
+
 ## [4.0.0](https://github.com/acrool/acrool-react-locale/compare/v4.0.0-alpha.1...v4.0.0) (2025-05-18)
 
 ## [4.0.0-alpha.1](https://github.com/acrool/acrool-react-locale/compare/v3.2.4...v4.0.0-alpha.1) (2025-05-17)
