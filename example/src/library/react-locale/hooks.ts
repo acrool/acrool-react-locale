@@ -1,7 +1,7 @@
 import {useLocale} from '@acrool/react-locale';
 
-import {TCurrTranslations} from '@/locales/en-US';
+import {TDefaultTranslations} from '@/locales/en-US';
 
 
 
-export const useAppLocale = useLocale<TCurrTranslations>;
+export const useAppLocale = useLocale<TDefaultTranslations>;
