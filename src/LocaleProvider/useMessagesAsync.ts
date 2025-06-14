@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-import {II18nTexts, TLocale, TLocaleDictionariesAsync} from '../types';
+import {TI18nTexts, TLocale, TLocaleDictionariesAsync} from '../types';
 import {formatTranslationMessagesAsync} from '../utils';
 
 interface IProps {
@@ -14,7 +14,7 @@ const useMessagesAsync = ({
     defaultLocale,
     localeDictionaries,
 }: IProps) => {
-    const [messages, setMessages] = useState<II18nTexts|undefined>();
+    const [messages, setMessages] = useState<TI18nTexts|undefined>();
 
     useEffect(() => {
         formatTranslationMessagesAsync(locale, defaultLocale, localeDictionaries)
