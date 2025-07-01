@@ -2,13 +2,13 @@ import logger from '@acrool/js-logger';
 import React, {Fragment, ReactNode} from 'react';
 import {IntlProvider} from 'react-intl';
 
+import {LocaleContextProvider} from '../context';
+import TranslationWrapper from '../TranslationWrapper';
 import {
     TLocale,
     TLocaleDictionaries,
-    TOnchangeLocale,
+    TOnChangeLocale,
 } from '../types';
-import {LocaleContextProvider} from './context';
-import TranslationWrapper from './TranslationWrapper';
 import useMessages from './useMessages';
 
 
@@ -18,7 +18,7 @@ interface IProps{
     isReMountWithChangeLocale?: boolean
     ignoreMissingLocaleMessage?: boolean
     locale: TLocale
-    onChangeLocale: TOnchangeLocale
+    onChangeLocale: TOnChangeLocale
     defaultLocale: TLocale
 }
 

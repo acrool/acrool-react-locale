@@ -1,9 +1,5 @@
 # Acrool React Locale
 
-<a href="https://acrool-react-locale.pages.dev/" title="Acrool React Locale - Internationalize Elegant intl library based for Reactjs">
-    <img src="https://raw.githubusercontent.com/acrool/acrool-react-locale/main/example/public/og.webp" alt="Acrool React Locale Logo"/>
-</a>
-
 <p align="center">
     Internationalize Elegant intl library based for Reactjs
 </p>
@@ -28,7 +24,7 @@
 
 - Use `react-intl v7` for packaging
 - Support Hooks
-- Support `Nextjs 14+`
+- Support `Nextjs 15+`
 
 
 ## Install
@@ -203,9 +199,9 @@ export enum ELocales {
 }
 
 export const localeDictionaries: TLocaleDictionariesAsync = {
-    [ELocales.enUS]: () => import('@/locales/en-US'),
-    [ELocales.zhTW]: () => import('@/locales/zh-TW'),
-    [ELocales.jaJP]: () => import('@/locales/ja-JP'),
+    [ELocales.enUS]: () => import('@/locales/en-US').then((module) => module.default),
+    [ELocales.zhTW]: () => import('@/locales/zh-TW').then((module) => module.default),
+    [ELocales.jaJP]: () => import('@/locales/ja-JP').then((module) => module.default),
 };
 ```
 
@@ -345,22 +341,3 @@ const preview: Preview = {
     ],
 };
 ```
-
-
-There is also a example that you can play with it:
-
-[![Play react-editext-example](https://raw.githubusercontent.com/acrool/acrool-react-locale/main/play-in-example-button.svg)](https://acrool-react-locale.pages.dev)
-
-
-## IDE Webstorm Tools 
-
-[Acrool React Utils With Webstorm](https://plugins.jetbrains.com/plugin/27268-acrool-react-utils)
-
-<img src="https://raw.githubusercontent.com/acrool/acrool-react-locale/main/example/public/ide-helper/1.png" alt="Webstorm Panel"/>
-<img src="https://raw.githubusercontent.com/acrool/acrool-react-locale/main/example/public/ide-helper/2.png" alt="Convert t()"/>
-<img src="https://raw.githubusercontent.com/acrool/acrool-react-locale/main/example/public/ide-helper/3.png" alt="Create to locales"/>
-
-
-## License
-
-MIT © [Acrool](https://github.com/acrool) & [Imagine](https://github.com/imagine10255)

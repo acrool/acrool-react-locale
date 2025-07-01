@@ -1,0 +1,8 @@
+{
+  "name": "@acrool/react-locale/server",
+  "description": "Acrool React Locale for server",
+  "private": true,
+  "main": "./index.cjs.js",
+  "module": "./index.es.js",
+  "types": "./index.d.ts"
+}

@@ -1,4 +1,4 @@
-import React, {Children, useState} from 'react';
+import React, {ReactNode, useState} from 'react';
 
 import {TLocale, TLocaleDictionaries} from '../types';
 import OriginLocaleProvider from './OriginLocaleProvider';
@@ -6,15 +6,15 @@ import OriginLocaleProvider from './OriginLocaleProvider';
 
 interface IProps{
     localeDictionaries: TLocaleDictionaries
-    children: JSX.Element
+    children: ReactNode
     defaultLocale: TLocale
     ignoreMissingLocaleMessage?: boolean
     currentLocale: string
 }
 
 /**
- * For SSG Route
  * 通常使用路徑上帶有語系，直接設定語系內容
+ * For SSG/SSR Route (NextJS)
  * @param localeDictionaries
  * @param currentLocale
  * @param defaultLocale

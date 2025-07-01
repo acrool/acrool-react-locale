@@ -1,10 +1,8 @@
 import {act,renderHook} from '@testing-library/react';
 import React, {ReactNode} from 'react';
-import {createIntl, createIntlCache, IntlProvider, RawIntlProvider} from 'react-intl';
 
 import {useLocale} from './hook';
-import {LocaleContext} from './LocaleProvider/context';
-import LocaleProvider from "./LocaleProvider";
+import {LocaleProvider} from './LocaleProvider';
 
 
 const localeDictionaries = {

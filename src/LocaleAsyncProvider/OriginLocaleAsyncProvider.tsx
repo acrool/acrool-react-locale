@@ -2,15 +2,15 @@ import logger from '@acrool/js-logger';
 import React, {Fragment, ReactNode} from 'react';
 import {IntlProvider} from 'react-intl';
 
+import {LocaleContextProvider} from '../context';
+import TranslationWrapper from '../TranslationWrapper';
 import {
     TLocale,
     TLocaleDictionariesAsync,
-    TOnchangeLocale,
+    TOnChangeLocale,
     TRenderLoading
 } from '../types';
 import {isEmpty} from '../utils';
-import {LocaleContextProvider} from './context';
-import TranslationWrapper from './TranslationWrapper';
 import useMessagesAsync from './useMessagesAsync';
 
 
@@ -20,7 +20,7 @@ interface IProps{
     isReMountWithChangeLocale?: boolean
     ignoreMissingLocaleMessage?: boolean
     locale: TLocale
-    onChangeLocale: TOnchangeLocale
+    onChangeLocale: TOnChangeLocale
     defaultLocale: TLocale
     renderLoading?: TRenderLoading
 }
@@ -35,7 +35,7 @@ interface IProps{
  * @param defaultLocale
  * @param children
  */
-const OriginLocaleProvider = ({
+const OriginLocaleAsyncProvider = ({
     localeDictionaries,
     isReMountWithChangeLocale = false,
     ignoreMissingLocaleMessage = false,
@@ -95,7 +95,7 @@ const OriginLocaleProvider = ({
             locale={locale}
             defaultLocale={defaultLocale}
             messages={messages}
-            onWarn={logger.warning}
+            onWarn={handleOnWarning}
             onError={handleOnError}
             textComponent={TranslationWrapper as React.ComponentType}
         >
@@ -106,4 +106,4 @@ const OriginLocaleProvider = ({
     </LocaleContextProvider>;
 };
 
-export default OriginLocaleProvider;
+export default OriginLocaleAsyncProvider;

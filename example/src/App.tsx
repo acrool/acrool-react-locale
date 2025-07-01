@@ -1,7 +1,7 @@
 import './App.css';
 
 import {GridThemeProvider} from '@acrool/react-grid';
-import LocaleProvider from '@acrool/react-locale';
+import {LocaleProvider} from '@acrool/react-locale';
 
 import Banner from './components/Banner';
 import {DEFAULT_LOCALE, localeDictionaries} from './config/locale';

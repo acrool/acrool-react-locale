@@ -1,4 +1,4 @@
-import LocaleProvider, {TLocaleDictionaries} from '@acrool/react-locale';
+import {LocaleProvider, TLocaleDictionaries} from '@acrool/react-locale';
 import {ReactNode} from 'react';
 
 import localeZhTW from '@/locales/zh-TW';

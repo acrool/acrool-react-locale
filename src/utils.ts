@@ -1,6 +1,13 @@
 import logger from '@acrool/js-logger';
+import {createIntl, createIntlCache} from 'react-intl';
 
-import {TI18nTexts, TLocale, TLocaleDictionaries, TLocaleDictionariesAsync, TMessage} from './types';
+import {
+    TI18nGroupTexts,
+    TI18nTexts,
+    TLocale,
+    TLocaleDictionaries,
+    TLocaleDictionariesOrAsync
+} from './types';
 
 
 export type Empty = null | undefined | false | '' | 0;
@@ -31,63 +38,3 @@ export function isEmpty<T>(value: T, checkOption?: {
 }
 
 
-/**
- *
- * @param locale 選擇語系
- * @param defaultLocale
- * @param localeDictionaries
- */
-export const formatTranslationMessagesAsync = async (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionariesAsync): Promise<TI18nTexts> => {
-
-    // Get Default Setting
-    let messages = localeDictionaries[locale];
-    if(typeof messages === 'undefined') {
-        logger.warning('@acrool/react-locale', `localeDictionaries not have key \`${locale}\` in locale!, use default \`${defaultLocale}\``);
-        messages = localeDictionaries[defaultLocale];
-        if (typeof messages === 'undefined') {
-            logger.warning('@acrool/react-locale', `localeDictionaries not have key \`${defaultLocale}\` in locale!, please check`);
-            return {};
-        }
-    }
-    
-    const fetchMessage = typeof messages === 'function' ? (await messages()).default: messages;
-
-    // Flatten messages
-    const flat: TI18nTexts = {};
-    Object.values(fetchMessage).forEach(group => {
-        Object.entries(group).forEach(([k, v]) => {
-            flat[k] = v;
-        });
-    });
-    return flat;
-};
-
-
-/**
- *
- * @param locale 選擇語系
- * @param defaultLocale
- * @param localeDictionaries
- */
-export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocale, localeDictionaries: TLocaleDictionaries): TI18nTexts => {
-
-    // Get Default Setting
-    let messages = localeDictionaries[locale];
-    if(typeof messages === 'undefined') {
-        logger.warning('@acrool/react-locale', `localeDictionaries not have key \`${locale}\` in locale!, use default \`${defaultLocale}\``);
-        messages = localeDictionaries[defaultLocale];
-        if (typeof messages === 'undefined') {
-            logger.warning('@acrool/react-locale', `localeDictionaries not have key \`${defaultLocale}\` in locale!, please check`);
-            return {};
-        }
-    }
-
-    // 扁平化
-    const flat: TI18nTexts = {};
-    Object.values(messages).forEach(group => {
-        Object.entries(group).forEach(([k, v]) => {
-            flat[k] = v;
-        });
-    });
-    return flat;
-};

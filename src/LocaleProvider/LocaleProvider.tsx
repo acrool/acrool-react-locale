@@ -1,6 +1,6 @@
 import React, {ReactNode, useEffect, useState} from 'react';
 
-import {TLocale, TLocaleDictionaries, TOnchangeLocale, TRenderLoading} from '../types';
+import {TLocale, TLocaleDictionaries, TOnChangeLocale, TRenderLoading} from '../types';
 import OriginLocaleProvider from './OriginLocaleProvider';
 
 
@@ -9,7 +9,7 @@ interface IProps{
     children: ReactNode
     defaultLocale: TLocale
     persistKey?: string
-    onChangeLocale?: TOnchangeLocale
+    onChangeLocale?: TOnChangeLocale
     ignoreMissingLocaleMessage?: boolean
     renderLoading?: TRenderLoading
 }

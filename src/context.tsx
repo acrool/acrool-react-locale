@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {TLocale} from '../types';
+import {TLocale} from './types';
 
 
 /** -----------------------------------------
@@ -21,12 +21,10 @@ const state: IState = {
 
 const LocaleContext = React.createContext<IState>(state);
 LocaleContext.displayName = 'LocaleProvider';
-const LocaleContextConsumer = LocaleContext.Consumer;
 const LocaleContextProvider = LocaleContext.Provider;
 
 
 export {
     LocaleContext,
-    LocaleContextConsumer,
     LocaleContextProvider,
 };

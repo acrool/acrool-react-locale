@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 
+import {formatTranslationMessages} from '../server';
 import {TI18nTexts, TLocale, TLocaleDictionaries} from '../types';
-import {formatTranslationMessages} from '../utils';
 
 interface IProps {
     locale: TLocale
@@ -9,6 +9,13 @@ interface IProps {
     localeDictionaries: TLocaleDictionaries
 }
 
+
+/**
+ * 多語系翻譯
+ * @param locale
+ * @param defaultLocale
+ * @param localeDictionaries
+ */
 const useMessages = ({
     locale,
     defaultLocale,

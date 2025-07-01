@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 
 import {TI18nTexts, TLocale, TLocaleDictionariesAsync} from '../types';
-import {formatTranslationMessagesAsync} from '../utils';
+import {formatTranslationMessagesAsync} from './utils';
 
 interface IProps {
     locale: TLocale
@@ -9,6 +9,12 @@ interface IProps {
     localeDictionaries: TLocaleDictionariesAsync
 }
 
+/**
+ * 非同步多語系翻譯
+ * @param locale
+ * @param defaultLocale
+ * @param localeDictionaries
+ */
 const useMessagesAsync = ({
     locale,
     defaultLocale,

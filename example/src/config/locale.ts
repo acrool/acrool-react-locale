@@ -1,7 +1,8 @@
-import {TLocaleDictionaries, TLocaleDictionariesAsync} from '@acrool/react-locale';
+import {TLocaleDictionaries, TLocaleDictionariesOrAsync} from '@acrool/react-locale';
+
 import {default as localeEnUS} from '../locales/en-US';
-import {default as localeZhTW} from '../locales/zh-TW';
 import {default as localeJaJP} from '../locales/ja-JP';
+import {default as localeZhTW} from '../locales/zh-TW';
 
 export enum ELocales {
     enUS = 'en-US',
@@ -16,10 +17,10 @@ export const localeDictionaries: TLocaleDictionaries = {
 };
 
 
-export const localeDictionariesAsync: TLocaleDictionariesAsync = {
-    [ELocales.enUS]: () => import('../locales/en-US'),
-    [ELocales.zhTW]: () => import('../locales/zh-TW'),
-    [ELocales.jaJP]: () => import('../locales/ja-JP'),
+export const localeDictionariesAsync: TLocaleDictionariesOrAsync = {
+    [ELocales.enUS]: () => import('../locales/en-US').then((module) => module.default),
+    [ELocales.zhTW]: () => import('../locales/zh-TW').then((module) => module.default),
+    [ELocales.jaJP]: () => import('../locales/ja-JP').then((module) => module.default),
 };
 
 export const DEFAULT_LOCALE = ELocales.enUS;

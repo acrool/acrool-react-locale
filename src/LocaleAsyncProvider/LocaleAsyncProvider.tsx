@@ -1,6 +1,6 @@
 import React, {ReactNode, useEffect, useState} from 'react';
 
-import {TLocale, TLocaleDictionariesAsync, TOnchangeLocale, TRenderLoading} from '../types';
+import {TLocale, TLocaleDictionariesAsync, TOnChangeLocale, TRenderLoading} from '../types';
 import OriginLocaleAsyncProvider from './OriginLocaleAsyncProvider';
 
 
@@ -9,7 +9,7 @@ interface IProps{
     children: ReactNode
     defaultLocale: TLocale
     persistKey?: string
-    onChangeLocale?: TOnchangeLocale
+    onChangeLocale?: TOnChangeLocale
     ignoreMissingLocaleMessage?: boolean
     renderLoading?: TRenderLoading
 }
@@ -22,6 +22,7 @@ interface IProps{
  * @param persistKey
  * @param children
  * @param onChangeLocale 當語系異動時
+ * @param ignoreMissingLocaleMessage
  * @param renderLoading
  */
 const LocaleAsyncProvider = ({

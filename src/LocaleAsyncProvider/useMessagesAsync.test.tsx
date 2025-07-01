@@ -5,25 +5,21 @@ import useMessagesAsync from './useMessagesAsync';
 
 const localeDictionaries: TLocaleDictionariesAsync = {
     'zh-TW': async () => ({
-        default: {
-            common: {
-                hello: '你好',
-                bye: '再見',
-            },
-            page: {
-                title: '標題',
-            },
+        common: {
+            hello: '你好',
+            bye: '再見',
+        },
+        page: {
+            title: '標題',
         },
     }),
     'en-US': async () => ({
-        default: {
-            common: {
-                hello: 'Hello',
-                bye: 'Bye',
-            },
-            page: {
-                title: 'Title',
-            },
+        common: {
+            hello: 'Hello',
+            bye: 'Bye',
+        },
+        page: {
+            title: 'Title',
         },
     }),
 };

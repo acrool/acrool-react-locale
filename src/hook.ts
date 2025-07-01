@@ -1,7 +1,7 @@
 import {useCallback, useContext} from 'react';
 import {useIntl} from 'react-intl';
 
-import {LocaleContext} from './LocaleProvider/context';
+import {LocaleContext} from './context';
 import {TTranslationKey} from './types';
 
 
