@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0-alpha.0](https://github.com/acrool/acrool-react-locale/compare/v4.1.0...v4.2.0-alpha.0) (2025-07-01)
+
+
+### Features
+
+* 新增 NextJS 15+ 支援及多語系路由範例 ([34ab4ab](https://github.com/acrool/acrool-react-locale/commit/34ab4ab0b1f5eab0276ddcfb9f5ca7afe52327d2))
+
 ## [4.1.0](https://github.com/acrool/acrool-react-locale/compare/v4.0.0...v4.1.0) (2025-06-14)
 
 ## [4.0.0](https://github.com/acrool/acrool-react-locale/compare/v4.0.0-alpha.1...v4.0.0) (2025-05-18)
