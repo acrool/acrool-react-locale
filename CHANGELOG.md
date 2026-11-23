@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0-alpha.1](https://github.com/acrool/acrool-react-locale/compare/v4.2.0-alpha.0...v4.2.0-alpha.1) (2026-11-23)
+
+
+### Bug Fixes
+
+* **build:** externalize react/jsx-runtime ([4a7c9e5](https://github.com/acrool/acrool-react-locale/commit/4a7c9e567a5d1face41bc1f5be6215d8684832b1))
+
 ## [4.2.0-alpha.0](https://github.com/acrool/acrool-react-locale/compare/v4.1.0...v4.2.0-alpha.0) (2025-07-01)
 
 
