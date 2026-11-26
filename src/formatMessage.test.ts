@@ -51,6 +51,23 @@ describe('formatMessage', () => {
         expect(run('nested', {args: {b: true}}).output).toBe('a true c');
     });
 
+    it('參數名稱與括號內空白的規則與 react-intl 相同', () => {
+        const format = (pattern: string, args: Record<string, unknown>) => {
+            const errors: IFormatError[] = [];
+            const output = formatMessage({locale: 'en-US', defaultLocale: 'en-US', messages: {k: pattern}, onError: (error) => errors.push(error)}, 'k', {args});
+            return {output, codes: errors.map((error) => error.code)};
+        };
+        // 空白：tab、換行、U+200E 等算空白；不換行空白（U+00A0）不算
+        expect(format('{\ta\n}', {a: 'A'})).toEqual({output: 'A', codes: []});
+        expect(format('{\u200Ea}', {a: 'A'})).toEqual({output: 'A', codes: []});
+        expect(format('{\u00A0a}', {a: 'A'})).toEqual({output: '{\u00A0a}', codes: ['FORMAT_ERROR']});
+        // 名稱不能含 ICU 的語法字元（#、-、. 等），即使 args 有同名的參數
+        expect(format('{a#}', {'a#': 'A'})).toEqual({output: '{a#}', codes: ['FORMAT_ERROR']});
+        expect(format('{a.b}', {'a.b': 'A'})).toEqual({output: '{a.b}', codes: ['FORMAT_ERROR']});
+        // 其他文字（數字、中文、重音字母）可以當名稱
+        expect(format('{1}{名稱}{é}', {1: 'x', 名稱: 'y', é: 'z'})).toEqual({output: 'xyz', codes: []});
+    });
+
     it('缺參數時回傳原始字串並回報 FORMAT_ERROR', () => {
         expect(run('str', {args: {}})).toEqual({output: 'Hello, {name}!', codes: ['FORMAT_ERROR']});
     });
@@ -68,9 +85,39 @@ describe('formatMessage', () => {
         expect(run('quoteEnd', {args: {}}).output).toBe('a \' b {c}');
     });
 
-    it('多餘的右大括號與 HTML 標籤照原樣輸出', () => {
+    it('多餘的右大括號照原樣輸出', () => {
         expect(run('brace', {args: {}}).output).toBe('a } b');
-        expect(run('tag', {args: {}}).output).toBe('Click <b>here</b>');
+    });
+
+    it('單引號後面接 < 或 > 也是跳脫', () => {
+        const format = (message: string) => formatMessage({locale: 'en-US', defaultLocale: 'en-US', messages: {k: message}}, 'k', {args: {a: 'A'}});
+        expect(format('\'<b>\' {a}')).toBe('<b> A');
+        expect(format('a \'> b')).toBe('a > b');
+        expect(format('\'<\'')).toBe('<');
+    });
+
+    it('有傳 args 時，HTML 標籤（自閉合的除外）回傳原始字串並回報 FORMAT_ERROR，與 react-intl 相同', () => {
+        expect(run('tag', {args: {}})).toEqual({output: 'Click <b>here</b>', codes: ['FORMAT_ERROR']});
+        const format = (message: string) => {
+            const errors: IFormatError[] = [];
+            const output = formatMessage({locale: 'en-US', defaultLocale: 'en-US', messages: {k: message}, onError: (error) => errors.push(error)}, 'k', {args: {a: 'A'}});
+            return {output, codes: errors.map((error) => error.code)};
+        };
+        expect(format('<b>{a}</b>')).toEqual({output: '<b>{a}</b>', codes: ['FORMAT_ERROR']});
+        expect(format('<br>')).toEqual({output: '<br>', codes: ['FORMAT_ERROR']});
+        expect(format('a</b>')).toEqual({output: 'a</b>', codes: ['FORMAT_ERROR']});
+        expect(format('<a href="x">y</a>')).toEqual({output: '<a href="x">y</a>', codes: ['FORMAT_ERROR']});
+        // 自閉合的標籤照常輸出，<br /> 會變成 <br/>
+        expect(format('<br/> {a}')).toEqual({output: '<br/> A', codes: []});
+        expect(format('<br /> {a}')).toEqual({output: '<br/> A', codes: []});
+        // < 後面不是英文字母就不是標籤
+        expect(format('x<1 {a}')).toEqual({output: 'x<1 A', codes: []});
+        expect(format('a < b')).toEqual({output: 'a < b', codes: []});
+        expect(format('<中> {a}')).toEqual({output: '<中> A', codes: []});
+    });
+
+    it('沒有傳 args 時，HTML 標籤照原樣輸出', () => {
+        expect(run('tag')).toEqual({output: 'Click <b>here</b>', codes: []});
     });
 
     it('不支援 plural、select 等 ICU 語法：回傳原始字串並回報 FORMAT_ERROR', () => {
