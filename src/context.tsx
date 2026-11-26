@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {IFormatMessageOptions} from './formatMessage';
 import {TLocale} from './types';
 
 
@@ -9,6 +10,7 @@ import {TLocale} from './types';
 export interface IState {
     locale: TLocale
     setLocale: (locale: TLocale) => void
+    formatMessage: (id: string, options?: IFormatMessageOptions) => string
 }
 
 /** -----------------------------------------
@@ -17,6 +19,7 @@ export interface IState {
 const state: IState = {
     locale: 'en-US',
     setLocale: () => console.log('not yet ready setLocale'),
+    formatMessage: (id, options) => options?.def ?? id,
 };
 
 const LocaleContext = React.createContext<IState>(state);

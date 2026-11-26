@@ -22,7 +22,7 @@
 
 ## Features
 
-- Use `react-intl v7` for packaging
+- Lightweight: no `react-intl` dependency since v5 (about 2.5 kB gzip)
 - Support Hooks
 - Support `Nextjs 15+`
 
@@ -239,9 +239,35 @@ import {useLocale} from '@acrool/react-locale';
 
 const Example = () => {
     const {t} = useLocale();
-    return <div>{t('page.promotion.title', {def: 'promotions', params: {country: 'Taiwan'}})}</div>
+    return <div>{t('page.promotion.title', {def: 'promotions', args: {country: 'Taiwan'}})}</div>
 }
 ```
+
+
+### Message syntax
+
+Since v5 the messages are formatted by the package itself (a subset of ICU MessageFormat, same output as `react-intl`):
+
+| Syntax | Example | Output |
+|---|---|---|
+| `{name}` argument | `'Hello, {name}!'` with `args: {name: 'Amy'}` | `Hello, Amy!` |
+| number argument (printed as is, no grouping) | `'Total {count}'` with `args: {count: 1234567}` | `Total 1234567` |
+| `null` / `undefined` argument | `'a {b} c'` with `args: {b: null}` | `a  c` |
+| `''` (escaped apostrophe) | `'It''s {x}'` with `args: {x: 1}` | `It's 1` |
+| `'{...}'` (literal braces) | `"'{literal}' {x}"` with `args: {x: 1}` | `{literal} 1` |
+
+- Without `args`, the message is returned as is (only `'{x}'` becomes `{x}`).
+- A missing argument returns the raw message and logs a `FORMAT_ERROR`.
+- A missing key returns `def` if given, otherwise the key itself, and logs a `MISSING_TRANSLATION` (hidden by `ignoreMissingLocaleMessage`).
+
+Not supported: `plural`, `select`, `selectordinal`, `number`, `date`, `time` and rich text tags (`<b>...</b>`). Such messages are returned as is with a `FORMAT_ERROR`; format the value before passing it to `args` instead (for example `Intl.NumberFormat`, `Intl.PluralRules`).
+
+
+### Migrating from v4
+
+- `react-intl` is no longer bundled or installed. If your app uses `react-intl` directly, add it to your own dependencies.
+- Messages using the unsupported ICU syntax above need to be rewritten.
+- `t()` and `getLocale().t()` keep the same signature: `t(id, {def, args})`.
 
 global function (in not function component) `only in provider children component`
 

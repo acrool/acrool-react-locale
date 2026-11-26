@@ -1,6 +1,3 @@
-import logger from '@acrool/js-logger';
-import {createIntl, createIntlCache} from 'react-intl';
-
 import {
     TI18nGroupTexts,
     TI18nTexts,

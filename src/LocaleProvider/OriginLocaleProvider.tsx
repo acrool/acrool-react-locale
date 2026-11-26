@@ -1,14 +1,12 @@
-import logger from '@acrool/js-logger';
 import React, {Fragment, ReactNode} from 'react';
-import {IntlProvider} from 'react-intl';
 
 import {LocaleContextProvider} from '../context';
-import TranslationWrapper from '../TranslationWrapper';
 import {
     TLocale,
     TLocaleDictionaries,
     TOnChangeLocale,
 } from '../types';
+import useFormatMessage from '../useFormatMessage';
 import useMessages from './useMessages';
 
 
@@ -53,39 +51,13 @@ const OriginLocaleProvider = ({
         onChangeLocale(newLocale);
     };
 
-    /**
-     * 處理警告訊息
-     * @param message
-     */
-    const handleOnWarning = (message: string) => {
-        logger.danger('@acrool/react-locale', message.replace('@formatjs/intl',''));
-    };
+    const translate = useFormatMessage({locale, defaultLocale, messages, ignoreMissingLocaleMessage});
 
-    /**
-     * 處理錯誤訊息
-     * @param err
-     */
-    const handleOnError = (err: Error) => {
-        if(ignoreMissingLocaleMessage && err.message.includes('MISSING_TRANSLATION')){
-            return;
-        }
-        logger.danger('@acrool/react-locale', err.message.replace('@formatjs/intl Error ',''));
-    };
-
-    return <LocaleContextProvider value={{locale, setLocale: onHandleChangeLocale}}>
-        <IntlProvider
-            key={isReMountWithChangeLocale ? locale: undefined} // Using Key will cause the language to be changed and remounted.
-            locale={locale}
-            defaultLocale={defaultLocale}
-            messages={messages}
-            onWarn={handleOnWarning}
-            onError={handleOnError}
-            textComponent={TranslationWrapper as React.ComponentType}
-        >
-            <Fragment>
-                {children}
-            </Fragment>
-        </IntlProvider>
+    return <LocaleContextProvider value={{locale, setLocale: onHandleChangeLocale, formatMessage: translate}}>
+        {/* 有 key 時切換語系會重新掛載 children */}
+        <Fragment key={isReMountWithChangeLocale ? locale : undefined}>
+            {children}
+        </Fragment>
     </LocaleContextProvider>;
 };
 
