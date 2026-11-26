@@ -255,12 +255,15 @@ Since v5 the messages are formatted by the package itself (a subset of ICU Messa
 | `null` / `undefined` argument | `'a {b} c'` with `args: {b: null}` | `a  c` |
 | `''` (escaped apostrophe) | `'It''s {x}'` with `args: {x: 1}` | `It's 1` |
 | `'{...}'` (literal braces) | `"'{literal}' {x}"` with `args: {x: 1}` | `{literal} 1` |
+| `'<...'` (literal tag) | `"'<b>' {x}"` with `args: {x: 1}` | `<b> 1` |
+| self-closing tag | `'a<br />{x}'` with `args: {x: 1}` | `a<br/>1` |
 
+- An argument name is any text except whitespace and ICU syntax characters (`#`, `-`, `.`, `'`, `<` ...); whitespace around it is ignored (`{ name }`).
 - Without `args`, the message is returned as is (only `'{x}'` becomes `{x}`).
 - A missing argument returns the raw message and logs a `FORMAT_ERROR`.
 - A missing key returns `def` if given, otherwise the key itself, and logs a `MISSING_TRANSLATION` (hidden by `ignoreMissingLocaleMessage`).
 
-Not supported: `plural`, `select`, `selectordinal`, `number`, `date`, `time` and rich text tags (`<b>...</b>`). Such messages are returned as is with a `FORMAT_ERROR`; format the value before passing it to `args` instead (for example `Intl.NumberFormat`, `Intl.PluralRules`).
+Not supported: `plural`, `select`, `selectordinal`, `number`, `date`, `time` and rich text tags (`<b>...</b>`, `</b>`). When `args` is given, such messages are returned as is with a `FORMAT_ERROR`; format the value before passing it to `args` instead (for example `Intl.NumberFormat`, `Intl.PluralRules`).
 
 
 ### Migrating from v4
