@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/acrool/acrool-react-locale/compare/v4.2.0-alpha.1...v5.0.0) (2026-11-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* 拿掉 react-intl，改用內建的 {name} 參數格式化
+
+### Features
+
+* 拿掉 react-intl，改用內建的 {name} 參數格式化 ([0af6b5a](https://github.com/acrool/acrool-react-locale/commit/0af6b5acff724b4500c3d3dd4203a25a46d43a56))
+
+
+### Bug Fixes
+
+* 訊息格式化的跳脫、標籤與參數名稱規則與 react-intl 一致 ([c8ce5b1](https://github.com/acrool/acrool-react-locale/commit/c8ce5b1f38215ea786de95c74983670ec15dc856))
+
 ## [4.2.0-alpha.1](https://github.com/acrool/acrool-react-locale/compare/v4.2.0-alpha.0...v4.2.0-alpha.1) (2026-11-23)
 
 
