@@ -52,7 +52,6 @@
     "react-dom": ">=18.0.0 <20.0.0"
   },
   "dependencies": {
-    "react-intl": "7.1.11",
     "@acrool/js-logger": "1.0.26"
   },
   "devDependencies": {

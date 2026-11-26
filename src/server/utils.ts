@@ -1,6 +1,6 @@
 import logger from '@acrool/js-logger';
-import {createIntl, createIntlCache} from '@formatjs/intl';
 
+import {formatMessage} from '../formatMessage';
 import {TI18nGroupTexts, TI18nTexts, TLocale, TLocaleDictionaries, TTranslationKey} from '../types';
 
 /**
@@ -33,11 +33,6 @@ export const formatTranslationMessages = (locale: TLocale, defaultLocale: TLocal
 };
 
 
-
-
-
-const cache = createIntlCache();
-
 interface IGetLocale<T extends Record<string, Record<string, string>>> {
     t: (id: TTranslationKey<T>, options?: {
         def?: string,
@@ -53,13 +48,13 @@ interface IGetLocale<T extends Record<string, Record<string, string>>> {
 export const getLocale = <T extends Record<string, Record<string, string>>>(locale: TLocale, localeDictionary: TI18nGroupTexts): IGetLocale<T> => {
     const localeDictionaries: TLocaleDictionaries = {[locale]: localeDictionary};
     const messages = formatTranslationMessages(locale, locale, localeDictionaries);
-    const intlShape = createIntl({locale, messages}, cache);
+    const onError = (error: {message: string}) => logger.danger('@acrool/react-locale', error.message);
     return {
         t: (
             id: TTranslationKey<T>,
             options?: { def?: string, args?: Record<string, any> }
         ) => {
-            return intlShape.formatMessage({id: id as string, defaultMessage: options?.def}, options?.args) as string;
+            return formatMessage({locale, defaultLocale: locale, messages, onError}, id as string, options);
         }
     };
 };
